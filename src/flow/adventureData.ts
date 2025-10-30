@@ -71,7 +71,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Objetivo del evento',
     category: 'Comprension lectora',
-    prompt: '¿Cuál es el proposito principal según Nathalie Desplas?',
+    prompt: '¿Cuál es el propósito principal según Nathalie Desplas?',
     readingId: 'lectura-llorona',
     options: [
       { id: 'a', text: 'Difundir la cultura y la tradición de Xochimilco.', correct: true },
@@ -93,7 +93,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'manifestaciónes artísticas',
     category: 'Conceptos clave',
-    prompt: '¿Qué describe mejor a una manifestación artistica de la cultura popular?',
+    prompt: '¿Qué describe mejor a una manifestación artística de la cultura popular?',
     readingId: 'lectura-manifestaciónes',
     options: [
       { id: 'a', text: 'Una expresion que comparte tradiciónes y creencias mediante relatos y espectáculos.', correct: true },
@@ -207,7 +207,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Mensaje para la comunidad',
     category: 'Conciencia ambiental',
-    prompt: '¿Qué mensaje motivaria mejor a la comunidad a protegerlo?',
+    prompt: '¿Qué mensaje motivaría mejor a la comunidad a protegerlo?',
     readingId: 'lectura-ajolote',
     options: [
       { id: 'a', text: 'Cuidemos los canales y evitemos contaminar el agua donde vive el ajolote.', correct: true },
@@ -221,7 +221,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'reading',
     title: 'Lenguaje visual y sonoro',
     category: 'Arte y cultura',
-    content: `Las historias contadas oralmente se pueden enriquecer con los lenguajes visual y sonoro. Estos ayudan a mantener y compartir tradiciónes artísticas y culturales, como mitos y leyendas, y permiten transmitir emociones e ideas que conectan con personas de distintas culturas y epocas.\n\nEl lenguaje visual incluye pintura, escultura y arquitectura; se apoya en simbolismos, color y luz para transmitir ideas y emociones. La composición y los detalles enriquecen la narrativa visual.\n\nEl lenguaje sonoro, como la música y la poesía oral, comunica emociones a traves del ritmo y la melodía. La pronunciación y la instrumentación anaden enfasís y crean un ambiente.`,
+    content: `Las historias contadas oralmente se pueden enriquecer con los lenguajes visual y sonoro. Estos ayudan a mantener y compartir tradiciónes artísticas y culturales, como mitos y leyendas, y permiten transmitir emociónes e ideas que conectan con personas de distintas culturas y epocas.\n\nEl lenguaje visual incluye pintura, escultura y arquitectura; se apoya en simbolismos, color y luz para transmitir ideas y emociónes. La composición y los detalles enriquecen la narrativa visual.\n\nEl lenguaje sonoro, como la música y la poesía oral, comunica emociónes a traves del ritmo y la melodía. La pronunciación y la instrumentación anaden enfasís y crean un ambiente.`,
     actionLabel: 'Continuar',
   },
   {
@@ -232,8 +232,8 @@ export const adventureSteps: AdventureStep[] = [
     prompt: '¿Qué afirma el texto sobre el lenguaje visual?',
     readingId: 'lectura-lenguajes',
     options: [
-      { id: 'a', text: 'Utiliza símbolos, color y luz para transmitir ideas y emociones.', correct: true },
-      { id: 'b', text: 'Se limita a repetir dialogos sin apoyos escenicos.', correct: false },
+      { id: 'a', text: 'Utiliza símbolos, color y luz para transmitir ideas y emociónes.', correct: true },
+      { id: 'b', text: 'Se limita a repetir dialogos sin apoyos escénicos.', correct: false },
       { id: 'c', text: 'Solo se aplica en museos y no en escenarios populares.', correct: false },
       { id: 'd', text: 'Reemplaza a los personajes y elimina la narrativa oral.', correct: false },
     ],
@@ -246,27 +246,27 @@ export const adventureSteps: AdventureStep[] = [
     prompt: '¿Cómo se pueden combinar ambos lenguajes según la lectura?',
     readingId: 'lectura-lenguajes',
     options: [
-      { id: 'a', text: 'Usando música y luz para resaltar emociones mientras se narra la historia.', correct: true },
+      { id: 'a', text: 'Usando música y luz para resaltar emociónes mientras se narra la historia.', correct: true },
       { id: 'b', text: 'Evitar cualquier sonido para que la gente imagine el ambiente.', correct: false },
       { id: 'c', text: 'Apagar las luces y hablar sin gestos para concentrarse.', correct: false },
       { id: 'd', text: 'Reemplazar la narración por una lista de datos.', correct: false },
     ],
   },
   {
-    id: 'lectura-cancion-llorona',
+    id: 'lectura-canción-llorona',
     type: 'reading',
-    title: 'Cancion tradiciónal: La Llorona',
+    title: 'canción tradiciónal: La Llorona',
     category: 'música y tradición',
     content: `Salias de un templo un dia, Llorona,\ncuando al pasar yo te vi.\nHermoso huipil llevabas, Llorona,\nque a la Virgen te crei.\n\nAy de mi, Llorona, Llorona,\nLlorona de azul celeste.\nAy de mi, Llorona, Llorona,\nLlorona de azul celeste.\n\nDicen que no sabe de amores, Llorona,\nel que no ha llorado cantando.\nAy de mi, Llorona, Llorona,\nLlorona de azul celeste.\nAy de mi, Llorona, Llorona,\nLlorona de azul celeste.\n\nNo dejare de quererte, Llorona,\nporque me muero contigo.\nAy de mi, Llorona, Llorona,\nLlorona llevame al rio.\nTapame con tu rebozo, Llorona,\nporque me muero de frio.`,
     actionLabel: 'Listo, continuar',
   },
   {
-    id: 'cancion-emocion',
+    id: 'canción-emoción',
     type: 'multiple-choice',
-    title: 'Emocion de la cancion',
+    title: 'emoción de la canción',
     category: 'música y tradición',
-    prompt: '¿Qué emocion predomina en la letra de la cancion?',
-    readingId: 'lectura-cancion-llorona',
+    prompt: '¿Qué emoción predomina en la letra de la canción?',
+    readingId: 'lectura-canción-llorona',
     options: [
       { id: 'a', text: 'Una mezcla de nostalgia, amor y dolor.', correct: true },
       { id: 'b', text: 'Alegria festiva por un encuentro familiar.', correct: false },
@@ -275,12 +275,12 @@ export const adventureSteps: AdventureStep[] = [
     ],
   },
   {
-    id: 'cancion-escena',
+    id: 'canción-escena',
     type: 'multiple-choice',
     title: 'Ambientacion escenica',
     category: 'música y tradición',
-    prompt: '¿Qué elemento escenico reforzaria mejor la atmosfera según la letra?',
-    readingId: 'lectura-cancion-llorona',
+    prompt: '¿Qué elemento escénico reforzaria mejor la atmósfera según la letra?',
+    readingId: 'lectura-canción-llorona',
     options: [
       { id: 'a', text: 'Iluminacion azul tenue y un rebozo que cubra a la protagonista.', correct: true },
       { id: 'b', text: 'Luces brillantes multicolor y confeti al centro.', correct: false },
@@ -315,6 +315,7 @@ export const adventureSteps: AdventureStep[] = [
 adventureSteps.forEach(step => {
   step.starValue = step.starValue ?? 3
 })
+
 
 
 
