@@ -81,20 +81,20 @@ export const adventureSteps: AdventureStep[] = [
     ],
   },
   {
-    id: 'lectura-manifestaciónes',
+    id: 'lectura-Manifestaciones',
     type: 'reading',
-    title: 'manifestaciónes artísticas',
+    title: 'Manifestaciones artísticas',
     category: 'Conceptos clave',
-    content: `Las manifestaciónes artísticas de la cultura popular de México incluyen historias, tradiciónes, música, artesanías y bailes, y se han transmitido por generaciones. Muchas representan mitos y leyendas que combinan creencias e imaginación popular para crear producciones artísticas.\n\nLos mitos son historias sobre seres mágicos que explican como comenzó el mundo y describen el origen de los elementos que conviven con la cultura. Las leyendas son relatos basados en hechos reales, pero mezclados con fantasía, que reflejan la cultura local, transmiten valores y, en ocasíónes, una enseñanza.\n\nEn ambos tipos de relato suelen aparecer personajes como deidades, héroes, seres fantásticos, fenómenos naturales y sobrenaturales, así como entidades espirituales.`,
+    content: `Las Manifestaciones artísticas de la cultura popular de México incluyen historias, tradiciónes, música, artesanías y bailes, y se han transmitido por generaciones. Muchas representan mitos y leyendas que combinan creencias e imaginación popular para crear producciones artísticas.\n\nLos mitos son historias sobre seres mágicos que explican como comenzó el mundo y describen el origen de los elementos que conviven con la cultura. Las leyendas son relatos basados en hechos reales, pero mezclados con fantasía, que reflejan la cultura local, transmiten valores y, en ocasíónes, una enseñanza.\n\nEn ambos tipos de relato suelen aparecer personajes como deidades, héroes, seres fantásticos, fenómenos naturales y sobrenaturales, así como entidades espirituales.`,
     actionLabel: 'Continuar al ejercicio',
   },
   {
-    id: 'manifestaciónes-sentido',
+    id: 'Manifestaciones-sentido',
     type: 'multiple-choice',
-    title: 'manifestaciónes artísticas',
+    title: 'Manifestaciones artísticas',
     category: 'Conceptos clave',
     prompt: '¿Qué describe mejor a una manifestación artística de la cultura popular?',
-    readingId: 'lectura-manifestaciónes',
+    readingId: 'lectura-Manifestaciones',
     options: [
       { id: 'a', text: 'Una expresion que comparte tradiciónes y creencias mediante relatos y espectáculos.', correct: true },
       { id: 'b', text: 'Unicamente un cuadro colgado en un museo.', correct: false },
@@ -108,7 +108,7 @@ export const adventureSteps: AdventureStep[] = [
     title: 'Tipos de narraciónes',
     category: 'Conceptos clave',
     prompt: '¿Qué diferencia menciona el texto entre mitos y leyendas?',
-    readingId: 'lectura-manifestaciónes',
+    readingId: 'lectura-Manifestaciones',
     options: [
       { id: 'a', text: 'Los mitos explican origenes con seres mágicos y las leyendas mezclan hechos reales con fantasía.', correct: true },
       { id: 'b', text: 'Los mitos siempre ocurren en ciudades modernas y las leyendas solo en selvas.', correct: false },
@@ -122,7 +122,7 @@ export const adventureSteps: AdventureStep[] = [
     title: 'Personajes frecuentes',
     category: 'Conceptos clave',
     prompt: '¿Qué tipo de personajes pueden aparecer en estos relatos según el texto?',
-    readingId: 'lectura-manifestaciónes',
+    readingId: 'lectura-Manifestaciones',
     options: [
       { id: 'a', text: 'Deidades, héroes y fenómenos naturales o sobrenaturales.', correct: true },
       { id: 'b', text: 'Unicamente vecinos comunes sin ningun elemento simbolico.', correct: false },
@@ -315,6 +315,7 @@ export const adventureSteps: AdventureStep[] = [
 adventureSteps.forEach(step => {
   step.starValue = step.starValue ?? 3
 })
+
 
 
 
