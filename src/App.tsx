@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { HashRouter, Link, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Grade from './pages/Grade'
 import Exams from './pages/Exams'
@@ -11,7 +11,7 @@ import AventuraMitos from './flow/AventuraMitos'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="flex min-h-screen flex-col">
         <header className="sticky top-0 z-30 border-b border-white/50 bg-white/70 backdrop-blur">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-3">
@@ -19,14 +19,14 @@ function App() {
               to="/"
               className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary shadow-[0_16px_32px_-24px_rgba(127,107,255,0.7)] transition hover:bg-primary/10 hover:text-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              <img src="/vite.svg" width={26} height={26} aria-hidden />
+              <img src="vite.svg" width={26} height={26} aria-hidden />
               Studify
             </Link>
             <nav
               className="hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-muted md:flex"
               aria-label="Secciones bloqueadas"
             >
-              {['Phonology Â· ENG', 'MatemÃ¡ticas Â· SPA', 'Language Â· ENG', 'Ciencias Â· SPA', 'Listening/Reading Â· ENG'].map(item => (
+              {['Phonology · ENG', 'Matemáticas · SPA', 'Language · ENG', 'Ciencias · SPA', 'Listening/Reading · ENG'].map(item => (
                 <span key={item} className="rounded-full bg-white/80 px-3 py-1 text-ink/30">
                   {item}
                 </span>
@@ -51,13 +51,12 @@ function App() {
         </main>
         <footer className="border-t border-white/60 bg-white/70 backdrop-blur">
           <div className="mx-auto w-full max-w-5xl px-5 py-4 text-xs font-medium text-muted">
-            Â© 2025 Studify Â· Progreso guardado localmente
+            © 2025 Studify · Progreso guardado localmente
           </div>
         </footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
 export default App
-
