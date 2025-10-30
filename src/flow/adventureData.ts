@@ -135,7 +135,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'reading',
     title: 'Mito del Sol y la Luna',
     category: 'Lectura guiada',
-    content: `Un buen dia, los dioses decidieron crear el Sol y la Luna para iluminar el mundo, que estaba en oscuridad. Tecuciztecatl se ofrecio a ser el Sol, pues se creia digno. Nanahuatzin, en cambio, fue elegido para la Luna, pues era pobre y modesto.\n\nAmbos debian arrojarse a una gran hoguera, sin embargo, Tecuciztecatl tuvo miedo y no se atrevio. Nanahuatzin, por el contrario, con valor, se lanzo a la hoguera. Tecuciztecatl, avergonzado, lo hizo despues. Los dioses se sorprendieron al ver que ambos eran igual de brillantes.\n\nLos dioses consideraron que Nanahuatzin merecia brillar más por su valor. Tomaron un conejo, lo arrojaron a la cara de Tecuciztecatl y le dejaron una mancha oscura. así, el orgulloso y rico se convirtio en la Luna, y el valiente y humilde, en el Sol.\n\nConsultado en: Palacio, Nairen. "La fascinante historia de la leyenda del sol y la luna en la mitologia azteca", Mundo Mitologico (21 de marzo de 2025).`,
+    content: `Un buen dia, los dioses decidieron crear el Sol y la Luna para iluminar el mundo, que estaba en oscuridad. Tecuciztecatl se ofrecio a ser el Sol, pues se creia digno. Nanahuatzin, en cambio, fue elegido para la Luna, pues era pobre y modesto.\n\nAmbos debían arrojarse a una gran hoguera, sin embargo, Tecuciztecatl tuvo miedo y no se atrevio. Nanahuatzin, por el contrario, con valor, se lanzo a la hoguera. Tecuciztecatl, avergonzado, lo hizo despues. Los dioses se sorprendieron al ver que ambos eran igual de brillantes.\n\nLos dioses consideraron que Nanahuatzin merecia brillar más por su valor. Tomaron un conejo, lo arrojaron a la cara de Tecuciztecatl y le dejaron una mancha oscura. así, el orgulloso y rico se convirtio en la Luna, y el valiente y humilde, en el Sol.\n\nConsultado en: Palacio, Nairen. "La fascinante historia de la leyenda del sol y la luna en la mitologia azteca", Mundo Mitologico (21 de marzo de 2025).`,
     actionLabel: 'Listo, vamos al ejercicio',
   },
   {
@@ -183,9 +183,9 @@ export const adventureSteps: AdventureStep[] = [
   {
     id: 'lectura-ajolote',
     type: 'reading',
-    title: 'Dia Nacional del Ajolote',
+    title: 'Día Nacional del Ajolote',
     category: 'Conciencia ambiental',
-    content: `En el año 2018 se oficializo el 1 de febrero como el Dia Nacional del Ajolote. Es un anfibio originario de Xochimilco que se encuentra en peligro de extincion y juega un papel vital en los ecosistemás y en la cultura mexicana.\n\nTiene una caracteristica inusual: la capacidad regenerativa, es decir, puede reponer partes de su cuerpo. Las antiguas culturas originarias creian que esa propiedad se debia a que estaba ligado al dios Xolotl, el hermano gemelo de Quetzalcoatl.\n\nAl proteger su habitat se cuidan tambien los canales, la flora y la fauna que conviven en esa zona lacustre de la Ciudad de México.`,
+    content: `En el año 2018 se oficializó el 1 de febrero como el Día Nacional del Ajolote. Es un anfibio originario de Xochimilco que se encuentra en peligro de extinción y juega un papel vital en los ecosistemás y en la cultura mexicana.\n\nTiene una característica inusual: la capacidad regenerativa, es decir, puede reponer partes de su cuerpo. Las antiguas culturas originarias creían que esa propiedad se debía a que estaba ligado al dios Xolotl, el hermano gemelo de Quetzalcoatl.\n\nAl proteger su hábitat se cuidan también los canales, la flora y la fauna que conviven en esa zona lacustre de la Ciudad de México.`,
     actionLabel: 'He terminado de leer',
   },
   {
@@ -221,7 +221,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'reading',
     title: 'Lenguaje visual y sonoro',
     category: 'Arte y cultura',
-    content: `Las historias contadas oralmente se pueden enriquecer con los lenguajes visual y sonoro. Estos ayudan a mantener y compartir tradiciónes artísticas y culturales, como mitos y leyendas, y permiten transmitir emociónes e ideas que conectan con personas de distintas culturas y epocas.\n\nEl lenguaje visual incluye pintura, escultura y arquitectura; se apoya en simbolismos, color y luz para transmitir ideas y emociónes. La composición y los detalles enriquecen la narrativa visual.\n\nEl lenguaje sonoro, como la música y la poesía oral, comunica emociónes a traves del ritmo y la melodía. La pronunciación y la instrumentación anaden enfasís y crean un ambiente.`,
+    content: `Las historias contadas oralmente se pueden enriquecer con los lenguajes visual y sonoro; además, ayudan a mantener y compartir tradiciónes artísticas y culturales, como mitos y leyendas, y permiten transmitir emociónes e ideas que conectan con personas de distintas culturas y épocas.\n\nEl lenguaje visual incluye pintura, escultura y arquitectura; se apoya en simbolismos, color y luz para transmitir ideas y emociónes. La composición y los detalles enriquecen la narrativa visual.\n\nEl lenguaje sonoro, como la música y la poesía oral, comunica emociónes a traves del ritmo y la melodía. La pronunciación y la instrumentación anaden enfasís y crean un ambiente.`,
     actionLabel: 'Continuar',
   },
   {
@@ -233,7 +233,7 @@ export const adventureSteps: AdventureStep[] = [
     readingId: 'lectura-lenguajes',
     options: [
       { id: 'a', text: 'Utiliza símbolos, color y luz para transmitir ideas y emociónes.', correct: true },
-      { id: 'b', text: 'Se limita a repetir dialogos sin apoyos escénicos.', correct: false },
+      { id: 'b', text: 'Se limita a repetir diálogos sin apoyos escénicos.', correct: false },
       { id: 'c', text: 'Solo se aplica en museos y no en escenarios populares.', correct: false },
       { id: 'd', text: 'Reemplaza a los personajes y elimina la narrativa oral.', correct: false },
     ],
@@ -315,6 +315,7 @@ export const adventureSteps: AdventureStep[] = [
 adventureSteps.forEach(step => {
   step.starValue = step.starValue ?? 3
 })
+
 
 
 
