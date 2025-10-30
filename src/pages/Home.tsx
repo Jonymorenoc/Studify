@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import { percentCompleted } from '../state/progress'
 
@@ -12,7 +12,7 @@ export default function Home() {
           <div className="space-y-2">
             <p className="text-xs font-semibold uppercase tracking-[0.45em] text-primary">Aprende jugando</p>
             <h1 className="text-2xl font-semibold text-ink sm:text-3xl">
-              ¡Bienvenido a tu aventura de aprendizaje!
+              Â¡Bienvenido a tu aventura de aprendizaje!
             </h1>
             <p className="text-base text-muted">
               Completa ejercicios divertidos, gana estrellas y sigue tu progreso en cada trayecto.
@@ -23,12 +23,12 @@ export default function Home() {
               <span aria-hidden>⭐</span> Gana estrellas
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-success/10 px-4 py-2 text-sm font-semibold text-success">
-              <span aria-hidden>🏆</span> Sigue tu progreso
+              <span aria-hidden>⭐</span> Sigue tu progreso
             </span>
           </div>
           <div className="space-y-3 rounded-[28px] border border-white/60 bg-white p-4 shadow-[0_20px_45px_-40px_rgba(127,107,255,0.7)] sm:flex sm:items-center sm:justify-between sm:gap-6 sm:space-y-0">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Lengua · Trayecto 1</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">Lengua Â· Trayecto 1</p>
               <h2 className="mt-1 text-lg font-semibold text-ink">Progreso general</h2>
             </div>
             <div className="w-full space-y-2 sm:max-w-xs">
@@ -50,9 +50,9 @@ export default function Home() {
         >
           <div className="space-y-1">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Tercero de primaria</p>
-            <h3 className="text-lg font-semibold text-ink">Exámenes trimestrales disponibles</h3>
+            <h3 className="text-lg font-semibold text-ink">ExÃ¡menes trimestrales disponibles</h3>
             <div className="mt-3 flex flex-wrap gap-2">
-              {['Lengua', 'Matemáticas', 'Ciencias', 'English'].map(label => (
+              {['Lengua', 'MatemÃ¡ticas', 'Ciencias', 'English'].map(label => (
                 <span
                   key={label}
                   className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
@@ -68,10 +68,11 @@ export default function Home() {
           </div>
           <div className="inline-flex items-center gap-2 self-end rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-primary sm:self-center">
             Comenzar
-            <span aria-hidden>→</span>
+            <span aria-hidden>⭐</span>
           </div>
         </Link>
       </section>
     </div>
   )
 }
+
