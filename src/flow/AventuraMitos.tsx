@@ -230,6 +230,14 @@ function ChoiceStep({
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [attempts, setAttempts] = useState(0)
   const [feedback, setFeedback] = useState<'idle' | 'correct' | 'incorrect'>('idle')
+  const shuffledOptions = useMemo(() => {
+    const copy = [...step.options]
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    }
+    return copy
+  }, [step.id])
 
   useEffect(() => {
     setSelected(new Set())
@@ -289,7 +297,7 @@ function ChoiceStep({
       {step.note && <p className="text-sm text-muted">{step.note}</p>}
 
       <div className="grid gap-3">
-        {step.options.map(option => {
+        {shuffledOptions.map(option => {
           const selectedState = isSelected(option.id)
           const isCorrectSelection = feedback === 'correct' && option.correct
           const isIncorrectSelection = feedback === 'incorrect' && selectedState && !option.correct
@@ -299,10 +307,12 @@ function ChoiceStep({
               key={option.id}
               type="button"
               onClick={() => toggleOption(option.id)}
-              className={`flex items-center justify-between rounded-[18px] border px-4 py-3 text-left text-sm transition ${
-                selectedState ? 'border-primary/50 bg-primary/10 text-primary' : 'border-white/70 bg-white/80 text-ink hover:border-primary/30 hover:bg-primary/10'
-              } ${isCorrectSelection ? 'border-success/60 bg-success/10 text-success' : ''} ${
-                isIncorrectSelection ? 'border-error/60 bg-error/10 text-error' : ''
+              className={`flex items-center justify-between rounded-[18px] border-2 px-4 py-3 text-left text-sm transition shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/60 ${
+                selectedState
+                  ? 'border-primary bg-primary/10 text-primary shadow-md ring-2 ring-primary/30'
+                  : 'border-white/80 bg-white/90 text-ink hover:border-primary/50 hover:ring-2 hover:ring-primary/20'
+              } ${isCorrectSelection ? 'border-success bg-success/10 text-success ring-2 ring-success/40' : ''} ${
+                isIncorrectSelection ? 'border-error bg-error/10 text-error ring-2 ring-error/40' : ''
               }`}
               disabled={disabled}
             >
@@ -330,4 +340,3 @@ function ChoiceStep({
     </div>
   )
 }
-
