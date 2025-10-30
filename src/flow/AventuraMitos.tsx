@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { BookOpen, ChevronLeft, ChevronRight, Lightbulb, Palette, Sparkles } from 'lucide-react'
 import Lottie from 'lottie-react'
 import starAnimation from '../assets/lottie/star.json'
+import CelebrationBurst from '../components/CelebrationBurst'
 import { adventureSteps, type AdventureStep, type MultipleChoiceStep, type ReadingStep } from './adventureData'
 import { getProgress, saveProgress } from '../state/progress'
 
@@ -15,6 +16,8 @@ type CompletionPayload = {
   stars: number
   attempts: number
 }
+
+type RewardToast = StepResult & { title: string }
 
 const iconByCategory: Record<string, ReactElement> = {
   Bienvenida: <Sparkles size={20} />,
@@ -40,31 +43,44 @@ const iconByCategory: Record<string, ReactElement> = {
   Gramatica: <Lightbulb size={20} />,
 }
 
+const defaultHintByCategory: Partial<Record<string, string>> = {
+  'Comprension lectora': 'Relee el fragmento que menciona la pregunta y subraya las palabras que se repiten.',
+  Creacion: 'Piensa en los pasos o materiales que usarías para crear lo que se pide.',
+  'Creacion visual': 'Recuerda los colores, sonidos o movimientos que se describen en el texto.',
+  Gramatica: 'Identifica la regla gramatical del tema y compara las opciones con esa pista.',
+  'Conceptos clave': 'Relaciona cada concepto con su definición o con el ejemplo que aparece en la lectura.',
+  'Proceso narrativo': 'Observa el orden de los sucesos (inicio, desarrollo y final) para elegir la opción correcta.',
+}
+
+const fallbackHint =
+  'Vuelve a leer la consigna, busca palabras clave en el texto y descarta las opciones que no las mencionen.';
+
 const totalSteps = adventureSteps.length
 
 export default function AventuraMitos() {
-  const [results, setResults] = useState<Record<string, StepResult>>(() => {
-    const initial: Record<string, StepResult> = {}
+  const initialResults = useMemo(() => {
+    const seed: Record<string, StepResult> = {}
     adventureSteps.forEach(step => {
       const saved = getProgress(`aventura.${step.id}`)
       if (saved && saved.score >= 1) {
-        initial[step.id] = {
+        seed[step.id] = {
           completed: true,
           stars: saved.stars,
           attempts: saved.attempts,
         }
       }
     })
-    return initial
-  })
-
-  const initialIndex = useMemo(() => {
-    const pending = adventureSteps.findIndex(step => !results[step.id]?.completed)
-    return pending === -1 ? 0 : pending
+    return seed
   }, [])
 
-  const [activeIndex, setActiveIndex] = useState(initialIndex)
+  const [results, setResults] = useState<Record<string, StepResult>>(initialResults)
+
+  const [activeIndex, setActiveIndex] = useState(() => {
+    const pending = adventureSteps.findIndex(step => !initialResults[step.id]?.completed)
+    return pending === -1 ? 0 : pending
+  })
   const [celebrating, setCelebrating] = useState(false)
+  const [lastReward, setLastReward] = useState<RewardToast | null>(null)
   const celebrationTimeout = useRef<number | null>(null)
 
   useEffect(() => {
@@ -99,6 +115,7 @@ export default function AventuraMitos() {
     if (results[currentStep.id]?.completed) return
     const result: StepResult = { completed: true, stars, attempts }
     setResults(prev => ({ ...prev, [currentStep.id]: result }))
+    setLastReward({ ...result, title: currentStep.title })
     saveProgress(`aventura.${currentStep.id}`, {
       score: 1,
       stars,
@@ -147,8 +164,15 @@ export default function AventuraMitos() {
       </header>
 
       {celebrating && (
-        <div className="mx-auto w-40">
-          <Lottie animationData={starAnimation} loop={false} />
+        <div className="relative mx-auto flex w-full max-w-sm flex-col items-center gap-3 rounded-[28px] border border-primary/20 bg-white/90 p-6 text-center shadow-[0_32px_75px_-40px_rgba(127,107,255,0.7)]">
+          <CelebrationBurst active={celebrating} />
+          <div className="w-40">
+            <Lottie animationData={starAnimation} loop={false} />
+          </div>
+          <p className="text-sm font-semibold text-primary">
+            ¡Genial! Sumaste {lastReward?.stars ?? 0} {lastReward?.stars === 1 ? 'estrella' : 'estrellas'} en&nbsp;
+            {lastReward?.title ?? 'este paso'}.
+          </p>
         </div>
       )}
 
@@ -287,6 +311,7 @@ function ChoiceStep({
   const [attempts, setAttempts] = useState(0)
   const [feedback, setFeedback] = useState<'idle' | 'correct' | 'incorrect'>('idle')
   const [showReading, setShowReading] = useState(false)
+  const [showHint, setShowHint] = useState(false)
 
   const shuffledOptions = useMemo(() => {
     const copy = [...step.options]
@@ -295,13 +320,14 @@ function ChoiceStep({
       ;[copy[i], copy[j]] = [copy[j], copy[i]]
     }
     return copy
-  }, [step.id])
+  }, [step])
 
   useEffect(() => {
     setSelected(new Set())
     setAttempts(0)
     setFeedback('idle')
     setShowReading(false)
+    setShowHint(false)
   }, [step.id, completed])
 
   const correctIds = useMemo(
@@ -309,6 +335,7 @@ function ChoiceStep({
     [step.options]
   )
   const allowMulti = correctIds.size > 1
+  const hintText = step.hint ?? defaultHintByCategory[step.category] ?? fallbackHint
 
   const toggleOption = (id: string) => {
     if (completed) return
@@ -341,6 +368,7 @@ function ChoiceStep({
 
     if (isCorrect) {
       setFeedback('correct')
+      setShowHint(false)
       const stars = nextAttempts === 1 ? 3 : nextAttempts === 2 ? 2 : 1
       onSuccess({ stars, attempts: nextAttempts })
     } else {
@@ -379,8 +407,28 @@ function ChoiceStep({
         </div>
       )}
 
-      <p className="text-base font-semibold text-ink">{step.prompt}</p>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-base font-semibold text-ink">{step.prompt}</p>
+        <button type="button" onClick={() => setShowHint(prev => !prev)} className="btn hint self-start sm:self-auto">
+          <Lightbulb size={14} />
+          {showHint ? 'Ocultar pista' : 'Ver pista'}
+        </button>
+      </div>
       {step.note && <p className="text-sm text-muted">{step.note}</p>}
+      {showHint && (
+        <div className="hint-popover" role="status" aria-live="polite">
+          <div className="hint-popover__header">
+            <Lightbulb size={12} />
+            Pista
+          </div>
+          <p className="text-sm text-muted">{hintText}</p>
+          <div className="hint-popover__actions">
+            <button type="button" onClick={() => setShowHint(false)} className="btn hint">
+              Entendido
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-3">
         {shuffledOptions.map(option => {

@@ -1,4 +1,5 @@
-﻿import { HashRouter, Link, Route, Routes } from 'react-router-dom'
+import { HashRouter, Link, Route, Routes } from 'react-router-dom'
+import { Sparkles } from 'lucide-react'
 import Home from './pages/Home'
 import Grade from './pages/Grade'
 import Exams from './pages/Exams'
@@ -10,24 +11,33 @@ import TiemposVerbales from './pages/ejercicios/TiemposVerbales'
 import AventuraMitos from './flow/AventuraMitos'
 import viteLogo from '/vite.svg'
 
+const lockedSections = [
+  'Phonology · ENG',
+  'Matemáticas · SPA',
+  'Language · ENG',
+  'Ciencias · SPA',
+  'Listening/Reading · ENG',
+]
+
 function App() {
   return (
     <HashRouter>
       <div className="flex min-h-screen flex-col">
-        <header className="sticky top-0 z-30 border-b border-white/50 bg-white/70 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-white/50 bg-white/80 backdrop-blur">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-3">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary shadow-[0_16px_32px_-24px_rgba(127,107,255,0.7)] transition hover:bg-primary/10 hover:text-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary shadow-[0_16px_36px_-24px_rgba(127,107,255,0.7)] transition hover:-translate-y-0.5 hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <img src={viteLogo} width={26} height={26} aria-hidden />
               Studify
+              <Sparkles size={16} aria-hidden className="text-secondary" />
             </Link>
             <nav
               className="hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-muted md:flex"
               aria-label="Secciones bloqueadas"
             >
-              {['Phonology · ENG', 'Matemáticas · SPA', 'Language · ENG', 'Ciencias · SPA', 'Listening/Reading · ENG'].map(item => (
+              {lockedSections.map(item => (
                 <span key={item} className="rounded-full bg-white/80 px-3 py-1 text-ink/30">
                   {item}
                 </span>
@@ -50,7 +60,7 @@ function App() {
             </Routes>
           </div>
         </main>
-        <footer className="border-t border-white/60 bg-white/70 backdrop-blur">
+        <footer className="border-t border-white/60 bg-white/80 backdrop-blur">
           <div className="mx-auto w-full max-w-5xl px-5 py-4 text-xs font-medium text-muted">
             © 2025 Studify · Progreso guardado localmente
           </div>
@@ -61,6 +71,4 @@ function App() {
 }
 
 export default App
-
-
 

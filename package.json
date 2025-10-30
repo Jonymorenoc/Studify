@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
+    "canvas-confetti": "^1.9.3",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.471.0",
     "lottie-react": "^2.4.1",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
