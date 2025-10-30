@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import { percentCompleted, getAll } from '../state/progress'
-import { adventureSteps, type ChoiceExercise } from '../flow/adventureData'
+import { adventureSteps, type AdventureStep } from '../flow/adventureData'
 
 export default function LenguaExam() {
   const pct = percentCompleted('trimestre1.lengua.trayecto1')
   const all = getAll()
-  const completed = adventureSteps.filter((step: ChoiceExercise) => all[`aventura.${step.id}`]?.score >= 1).length
-  const earnedStars = adventureSteps.reduce((acc: number, step: ChoiceExercise) => acc + (all[`aventura.${step.id}`]?.stars ?? 0), 0)
+  const completed = adventureSteps.filter((step: AdventureStep) => all[`aventura.${step.id}`]?.score >= 1).length
+  const earnedStars = adventureSteps.reduce(
+    (acc: number, step: AdventureStep) => acc + (all[`aventura.${step.id}`]?.stars ?? 0),
+    0
+  )
   const totalExercises = adventureSteps.length
-  const totalStars = totalExercises * 3
+  const totalStars = adventureSteps.reduce((acc, step) => acc + (step.starValue ?? 3), 0)
 
   const stats = [
     { label: 'Ejercicios', value: `${completed}/${totalExercises}`, icon: 'EJ' },

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { BookOpen, ChevronLeft, ChevronRight, Lightbulb, Palette, Sparkles } from 'lucide-react'
 import Lottie from 'lottie-react'
 import starAnimation from '../assets/lottie/star.json'
-import { adventureSteps, type ChoiceExercise } from './adventureData'
+import { adventureSteps, type AdventureStep, type MultipleChoiceStep, type ReadingStep } from './adventureData'
 import { getProgress, saveProgress } from '../state/progress'
 
 type StepResult = {
@@ -77,10 +77,23 @@ export default function AventuraMitos() {
 
   const currentStep = adventureSteps[activeIndex]
 
+  const readingLookup = useMemo(() => {
+    const map: Record<string, ReadingStep> = {}
+    adventureSteps.forEach(step => {
+      if (step.type === 'reading') {
+        map[step.id] = step
+      }
+    })
+    return map
+  }, [])
+
   const completedSteps = adventureSteps.filter(step => results[step.id]?.completed).length
   const totalStarsEarned = Object.values(results).reduce((acc, value) => acc + value.stars, 0)
   const totalStarsPossible = adventureSteps.reduce((acc, step) => acc + (step.starValue ?? 3), 0)
   const progressPercent = Math.round((completedSteps / totalSteps) * 100)
+  const currentCompleted = Boolean(results[currentStep.id]?.completed)
+  const readingForStep =
+    currentStep.type === 'multiple-choice' && currentStep.readingId ? readingLookup[currentStep.readingId] : undefined
 
   const handleComplete = ({ stars, attempts }: CompletionPayload) => {
     if (results[currentStep.id]?.completed) return
@@ -139,17 +152,21 @@ export default function AventuraMitos() {
         </div>
       )}
 
-      <StepCard
-        step={currentStep}
-        index={activeIndex}
-        total={totalSteps}
-        completed={Boolean(results[currentStep.id]?.completed)}
-      >
-        <ChoiceStep
-          step={currentStep}
-          onSuccess={handleComplete}
-          completed={Boolean(results[currentStep.id]?.completed)}
-        />
+      <StepCard step={currentStep} index={activeIndex} total={totalSteps} completed={currentCompleted}>
+        {currentStep.type === 'reading' ? (
+          <ReadingStepContent
+            step={currentStep}
+            onComplete={() => handleComplete({ stars: currentStep.starValue ?? 3, attempts: 1 })}
+            completed={currentCompleted}
+          />
+        ) : (
+          <ChoiceStep
+            step={currentStep}
+            onSuccess={handleComplete}
+            completed={currentCompleted}
+            reading={readingForStep}
+          />
+        )}
       </StepCard>
 
       <footer className="mt-4 flex items-center justify-between">
@@ -181,7 +198,7 @@ function StepCard({
   completed,
   children,
 }: {
-  step: ChoiceExercise
+  step: AdventureStep
   index: number
   total: number
   completed: boolean
@@ -208,7 +225,7 @@ function StepCard({
           </span>
           {completed && (
             <span className="inline-flex items-center gap-1 rounded-full bg-success/10 px-3 py-1 text-xs font-semibold text-success">
-              ✓ Completado
+              Completado
             </span>
           )}
         </div>
@@ -218,18 +235,59 @@ function StepCard({
   )
 }
 
+function ReadingStepContent({
+  step,
+  onComplete,
+  completed,
+}: {
+  step: ReadingStep
+  onComplete: (payload: CompletionPayload) => void
+  completed: boolean
+}) {
+  const [acknowledged, setAcknowledged] = useState(false)
+
+  const handleContinue = () => {
+    if (completed || acknowledged) return
+    setAcknowledged(true)
+    onComplete({ stars: step.starValue ?? 3, attempts: 1 })
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      <article className="rounded-2xl border border-white/60 bg-white/90 p-4 text-sm text-ink shadow-sm sm:p-6">
+        <h2 className="mb-3 flex items-center gap-2 text-base font-semibold text-primary">
+          <BookOpen size={18} /> LEE el siguiente texto
+        </h2>
+        <p className="whitespace-pre-wrap leading-relaxed text-muted">{step.content}</p>
+      </article>
+      <button
+        type="button"
+        onClick={handleContinue}
+        disabled={completed || acknowledged}
+        className="btn w-full max-w-xs self-start px-6 py-2 text-sm"
+      >
+        {completed || acknowledged ? 'Listo' : step.actionLabel ?? 'Continuar'}
+      </button>
+    </div>
+  )
+}
+
 function ChoiceStep({
   step,
   onSuccess,
   completed,
+  reading,
 }: {
-  step: ChoiceExercise
+  step: MultipleChoiceStep
   onSuccess: (payload: CompletionPayload) => void
   completed: boolean
+  reading?: ReadingStep
 }) {
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [attempts, setAttempts] = useState(0)
   const [feedback, setFeedback] = useState<'idle' | 'correct' | 'incorrect'>('idle')
+  const [showReading, setShowReading] = useState(false)
+
   const shuffledOptions = useMemo(() => {
     const copy = [...step.options]
     for (let i = copy.length - 1; i > 0; i--) {
@@ -243,19 +301,21 @@ function ChoiceStep({
     setSelected(new Set())
     setAttempts(0)
     setFeedback('idle')
+    setShowReading(false)
   }, [step.id, completed])
 
   const correctIds = useMemo(
     () => new Set(step.options.filter(option => option.correct).map(option => option.id)),
     [step.options]
   )
+  const allowMulti = correctIds.size > 1
 
   const toggleOption = (id: string) => {
     if (completed) return
     setFeedback('idle')
     setSelected(prev => {
       const next = new Set(prev)
-      if (step.allowMulti) {
+      if (allowMulti) {
         if (next.has(id)) next.delete(id)
         else next.add(id)
         return next
@@ -270,7 +330,7 @@ function ChoiceStep({
     setAttempts(nextAttempts)
 
     let isCorrect = false
-    if (step.allowMulti) {
+    if (allowMulti) {
       if (selected.size === correctIds.size) {
         isCorrect = Array.from(selected).every(id => correctIds.has(id))
       }
@@ -293,6 +353,32 @@ function ChoiceStep({
 
   return (
     <div className="flex flex-col gap-4">
+      {reading && (
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={() => setShowReading(show => !show)}
+            className="inline-flex items-center gap-2 self-start rounded-full border border-primary/40 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <BookOpen size={16} />
+            {showReading ? 'Ocultar lectura' : 'Volver a leer'}
+          </button>
+          {showReading && (
+            <article className="rounded-2xl border border-primary/20 bg-white/90 p-4 text-sm text-ink shadow-sm sm:p-5">
+              <h3 className="mb-2 text-sm font-semibold text-primary">{reading.title}</h3>
+              <p className="whitespace-pre-wrap leading-relaxed text-muted">{reading.content}</p>
+              <button
+                type="button"
+                onClick={() => setShowReading(false)}
+                className="mt-2 text-xs font-semibold text-primary underline underline-offset-4"
+              >
+                Cerrar lectura
+              </button>
+            </article>
+          )}
+        </div>
+      )}
+
       <p className="text-base font-semibold text-ink">{step.prompt}</p>
       {step.note && <p className="text-sm text-muted">{step.note}</p>}
 
@@ -334,7 +420,7 @@ function ChoiceStep({
         </button>
         {feedback === 'correct' && <span className="text-sm font-semibold text-success">Excelente, continua.</span>}
         {feedback === 'incorrect' && (
-          <span className="text-sm text-error">Revisa la pista mental y vuelve a intentarlo.</span>
+          <span className="text-sm text-error">Revisa la informacion y vuelve a intentarlo.</span>
         )}
       </div>
     </div>
