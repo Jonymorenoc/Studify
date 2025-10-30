@@ -1,4 +1,4 @@
-export type BaseStep = {
+ï»¿export type BaseStep = {
   id: string
   title: string
   category: string
@@ -35,7 +35,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'reading',
     title: 'La Llorona en Xochimilco',
     category: 'Lectura guiada',
-    content: `La puesta en escena "La Llorona en Xochimilco" cumple treinta anos de presentar la leyenda de la Llorona, o "Chokani", en nahuatl, y abrira la temporada de celebraciones por el Dia de Muertos en la Ciudad de Mexico. Este ano la produccion consta de 36 funciones que conjugan musica original, danza prehispanica, luces y teatro al aire libre, en un escenario que permite a las personas espectadoras disfrutar desde las trajineras un espectaculo nocturno.\n\nLa Llorona es una de las leyendas con mayor arraigo en la cultura mexicana. En esta ocasion se decidio incluir en el titulo la palabra "Chokani" -del nahuatl, "la que llora"- y, segun la secretaria de Turismo de la capital, Nathalie Desplas, el objetivo del evento es difundir la cultura y la tradicion de Xochimilco, cuyos canales hacen de la obra un espectaculo unico en el mundo.\n\nConsultado en: El Puic, bit.ly/3uwnNcT (21 de febrero de 2025).`,
+    content: `La puesta en escena "La Llorona en Xochimilco" cumple treinta anos de presentar la leyenda de la Llorona, o "Chokani", en nahuatl, y abrira la temporada de celebraciones por el Dia de Muertos en la Ciudad de Mexico. Este ano la produccion consta de 36 funciones que conjugan musica original, danza prehispanica, luces y teatro al aire libre, en un escenario que permite a las personas espectadoras disfrutar desde las trajineras un espectaculo nocturno.\n\nLa Llorona es una de las leyendas con mayor arraigo en la cultura mexicana. En esta ocasion se decidio incluir en el titulo la palabra "Chokani" -del nahuatl, "la que llora"- y, segun la secretaria de Turismo de la capital, Nathalie Desplas, el objetivo del evento es difundir la cultura y la tradicion de Xochimilco, cuyos canales hacen de la obra un espectaculo unico en el mundo.\n\nConsultado en: El PaÃ­s, bit.ly/3uwnNcT (21 de febrero de 2025).`,
     actionLabel: 'Ya he terminado de leer',
   },
   {
@@ -43,7 +43,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Idea principal',
     category: 'Comprension lectora',
-    prompt: '¿De que trata principalmente el texto?',
+    prompt: 'Â¿De que trata principalmente el texto?',
     readingId: 'lectura-llorona',
     options: [
       { id: 'a', text: 'Una puesta en escena que celebra la leyenda de la Llorona en Xochimilco.', correct: true },
@@ -57,7 +57,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Experiencia del publico',
     category: 'Comprension lectora',
-    prompt: '¿Que vuelve unica la experiencia del publico segun el texto?',
+    prompt: 'Â¿Que vuelve unica la experiencia del publico segun el texto?',
     readingId: 'lectura-llorona',
     options: [
       { id: 'a', text: 'Ver la obra desde trajineras en un espectaculo nocturno.', correct: true },
@@ -71,7 +71,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Objetivo del evento',
     category: 'Comprension lectora',
-    prompt: '¿Cual es el proposito principal segun Nathalie Desplas?',
+    prompt: 'Â¿Cual es el proposito principal segun Nathalie Desplas?',
     readingId: 'lectura-llorona',
     options: [
       { id: 'a', text: 'Difundir la cultura y la tradicion de Xochimilco.', correct: true },
@@ -93,7 +93,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Manifestaciones artisticas',
     category: 'Conceptos clave',
-    prompt: '¿Que describe mejor a una manifestacion artistica de la cultura popular?',
+    prompt: 'Â¿Que describe mejor a una manifestacion artistica de la cultura popular?',
     readingId: 'lectura-manifestaciones',
     options: [
       { id: 'a', text: 'Una expresion que comparte tradiciones y creencias mediante relatos y espectaculos.', correct: true },
@@ -107,7 +107,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Tipos de narraciones',
     category: 'Conceptos clave',
-    prompt: '¿Que diferencia menciona el texto entre mitos y leyendas?',
+    prompt: 'Â¿Que diferencia menciona el texto entre mitos y leyendas?',
     readingId: 'lectura-manifestaciones',
     options: [
       { id: 'a', text: 'Los mitos explican origenes con seres magicos y las leyendas mezclan hechos reales con fantasia.', correct: true },
@@ -121,7 +121,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Personajes frecuentes',
     category: 'Conceptos clave',
-    prompt: '¿Que tipo de personajes pueden aparecer en estos relatos segun el texto?',
+    prompt: 'Â¿Que tipo de personajes pueden aparecer en estos relatos segun el texto?',
     readingId: 'lectura-manifestaciones',
     options: [
       { id: 'a', text: 'Deidades, heroes y fenomenos naturales o sobrenaturales.', correct: true },
@@ -143,7 +143,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Mensaje del mito',
     category: 'Comprension lectora',
-    prompt: '¿Que ensenanza principal ofrece el mito?',
+    prompt: 'Â¿Que ensenanza principal ofrece el mito?',
     readingId: 'lectura-sol-luna',
     options: [
       { id: 'a', text: 'El valor y la humildad pueden iluminar al mundo.', correct: true },
@@ -157,7 +157,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Detalle del mito',
     category: 'Comprension lectora',
-    prompt: '¿Por que los dioses arrojaron un conejo a Tecuciztecatl?',
+    prompt: 'Â¿Por que los dioses arrojaron un conejo a Tecuciztecatl?',
     readingId: 'lectura-sol-luna',
     options: [
       { id: 'a', text: 'Para dejar una mancha que atenuara su brillo.', correct: true },
@@ -171,7 +171,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Valor destacado',
     category: 'Comprension lectora',
-    prompt: '¿Que valor representa Nanahuatzin en la historia?',
+    prompt: 'Â¿Que valor representa Nanahuatzin en la historia?',
     readingId: 'lectura-sol-luna',
     options: [
       { id: 'a', text: 'Humildad y valentia para cumplir una tarea dificil.', correct: true },
@@ -193,7 +193,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Importancia del ajolote',
     category: 'Conciencia ambiental',
-    prompt: '¿Por que es importante proteger al ajolote segun el texto?',
+    prompt: 'Â¿Por que es importante proteger al ajolote segun el texto?',
     readingId: 'lectura-ajolote',
     options: [
       { id: 'a', text: 'Porque es clave para el ecosistema de Xochimilco y simboliza una tradicion cultural.', correct: true },
@@ -207,7 +207,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Mensaje para la comunidad',
     category: 'Conciencia ambiental',
-    prompt: '¿Que mensaje motivaria mejor a la comunidad a protegerlo?',
+    prompt: 'Â¿Que mensaje motivaria mejor a la comunidad a protegerlo?',
     readingId: 'lectura-ajolote',
     options: [
       { id: 'a', text: 'Cuidemos los canales y evitemos contaminar el agua donde vive el ajolote.', correct: true },
@@ -229,7 +229,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Lenguaje visual',
     category: 'Arte y cultura',
-    prompt: '¿Que afirma el texto sobre el lenguaje visual?',
+    prompt: 'Â¿Que afirma el texto sobre el lenguaje visual?',
     readingId: 'lectura-lenguajes',
     options: [
       { id: 'a', text: 'Utiliza simbolos, color y luz para transmitir ideas y emociones.', correct: true },
@@ -243,7 +243,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Lenguajes en escena',
     category: 'Arte y cultura',
-    prompt: '¿Como se pueden combinar ambos lenguajes segun la lectura?',
+    prompt: 'Â¿Como se pueden combinar ambos lenguajes segun la lectura?',
     readingId: 'lectura-lenguajes',
     options: [
       { id: 'a', text: 'Usando musica y luz para resaltar emociones mientras se narra la historia.', correct: true },
@@ -265,7 +265,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Emocion de la cancion',
     category: 'Musica y tradicion',
-    prompt: '¿Que emocion predomina en la letra de la cancion?',
+    prompt: 'Â¿Que emocion predomina en la letra de la cancion?',
     readingId: 'lectura-cancion-llorona',
     options: [
       { id: 'a', text: 'Una mezcla de nostalgia, amor y dolor.', correct: true },
@@ -279,7 +279,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Ambientacion escenica',
     category: 'Musica y tradicion',
-    prompt: '¿Que elemento escenico reforzaria mejor la atmosfera segun la letra?',
+    prompt: 'Â¿Que elemento escenico reforzaria mejor la atmosfera segun la letra?',
     readingId: 'lectura-cancion-llorona',
     options: [
       { id: 'a', text: 'Iluminacion azul tenue y un rebozo que cubra a la protagonista.', correct: true },
@@ -301,7 +301,7 @@ export const adventureSteps: AdventureStep[] = [
     type: 'multiple-choice',
     title: 'Preparar la narracion',
     category: 'Narracion oral',
-    prompt: '¿Segun el texto, que debes hacer primero al preparar una narracion oral?',
+    prompt: 'Â¿Segun el texto, que debes hacer primero al preparar una narracion oral?',
     readingId: 'lectura-narracion-oral',
     options: [
       { id: 'a', text: 'Conocer la manifestacion cultural o el tema que abordaras.', correct: true },
@@ -315,4 +315,5 @@ export const adventureSteps: AdventureStep[] = [
 adventureSteps.forEach(step => {
   step.starValue = step.starValue ?? 3
 })
+
 
