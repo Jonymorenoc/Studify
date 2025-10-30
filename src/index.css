@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f6f4ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% -10%, rgba(243, 221, 255, 0.7), transparent 55%),
+    radial-gradient(circle at 85% -15%, rgba(203, 228, 255, 0.6), transparent 60%),
+    linear-gradient(180deg, #fcfbff 0%, #eef4ff 45%, #f8f3ff 100%);
+  color: #433d66;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@layer base {
+  ::selection {
+    background-color: rgba(127, 107, 255, 0.35);
+    color: #1f1a3d;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink;
+  }
+
+  p {
+    @apply text-sm text-muted;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-white/70 bg-surface-soft px-6 py-6 shadow-[0_24px_45px_-24px_rgba(127,107,255,0.45)];
+  }
+
+  .row {
+    @apply flex flex-wrap items-center gap-3;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary px-5 py-2 text-sm font-semibold text-white shadow-[0_18px_35px_-18px_rgba(127,107,255,0.8)] transition hover:shadow-[0_18px_35px_-12px_rgba(127,107,255,0.9)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn.secondary {
+    @apply bg-white text-primary border border-primary/20 hover:bg-primary/10;
+  }
+
+  .btn.ghost {
+    @apply bg-transparent text-primary hover:bg-primary/10;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-2 rounded-full bg-surface-soft px-3 py-1 text-xs font-semibold uppercase tracking-widest text-muted;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-primary/10 bg-white px-3 py-1 text-sm text-ink transition hover:bg-primary/10;
+  }
+
+  .chip.active {
+    @apply border-primary bg-primary/15 text-primary font-semibold;
+  }
+
+  .title {
+    @apply text-lg font-semibold text-ink;
+  }
+
+  .subtitle {
+    @apply text-sm text-muted;
+  }
+
+  .locked {
+    @apply opacity-50;
+  }
+}
