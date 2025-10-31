@@ -109,7 +109,7 @@ export default function Exams() {
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-base font-semibold text-muted">
                   <span aria-hidden className="text-primary/40">
-                    <exam.icon size={22} />
+                    {(() => { const Icon = exam.icon; return <Icon size={22} /> })()}
                   </span>
                   {exam.title}
                 </span>
@@ -129,7 +129,7 @@ export default function Exams() {
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-base font-semibold text-ink">
                   <span aria-hidden className="text-primary">
-                    <exam.icon size={22} />
+                    {(() => { const Icon = exam.icon; return <Icon size={22} /> })()}
                   </span>
                   {exam.title}
                 </span>

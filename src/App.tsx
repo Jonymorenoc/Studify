@@ -1,16 +1,18 @@
 import { HashRouter, Link, Route, Routes } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import { Sparkles } from 'lucide-react'
-import Home from './pages/Home'
-import Grade from './pages/Grade'
-import Exams from './pages/Exams'
-import LenguaExam from './pages/LenguaExam'
-import Trayecto1 from './pages/Trayecto1'
-import Trayecto2 from './pages/Trayecto2'
-import Trayecto3 from './pages/Trayecto3'
-import MitosLeyendas from './pages/ejercicios/MitosLeyendas'
-import LenguajeVisualSonoro from './pages/ejercicios/LenguajeVisualSonoro'
-import TiemposVerbales from './pages/ejercicios/TiemposVerbales'
-import AventuraMitos from './flow/AventuraMitos'
+import ErrorBoundary from './components/ErrorBoundary'
+const Home = lazy(()=>import('./pages/Home'))
+const Grade = lazy(()=>import('./pages/Grade'))
+const Exams = lazy(()=>import('./pages/Exams'))
+const LenguaExam = lazy(()=>import('./pages/LenguaExam'))
+const Trayecto1 = lazy(()=>import('./pages/Trayecto1'))
+const Trayecto2 = lazy(()=>import('./pages/Trayecto2'))
+const Trayecto3 = lazy(()=>import('./pages/Trayecto3'))
+const MitosLeyendas = lazy(()=>import('./pages/ejercicios/MitosLeyendas'))
+const LenguajeVisualSonoro = lazy(()=>import('./pages/ejercicios/LenguajeVisualSonoro'))
+const TiemposVerbales = lazy(()=>import('./pages/ejercicios/TiemposVerbales'))
+const AventuraMitos = lazy(()=>import('./flow/AventuraMitos'))
 import viteLogo from '/vite.svg'
 
 const lockedSections = [
@@ -49,19 +51,23 @@ function App() {
         </header>
         <main className="flex-1">
           <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/tercero" element={<Grade />} />
-              <Route path="/trimestre-1" element={<Exams />} />
-              <Route path="/trimestre-1/lengua" element={<LenguaExam />} />
-              <Route path="/trimestre-1/lengua/trayecto-1" element={<Trayecto1 />} />
-              <Route path="/trimestre-1/lengua/trayecto-2" element={<Trayecto2 />} />
-              <Route path="/trimestre-1/lengua/trayecto-3" element={<Trayecto3 />} />
-              <Route path="/trimestre-1/lengua/trayecto-1/mitos-y-leyendas" element={<MitosLeyendas />} />
-              <Route path="/trimestre-1/lengua/trayecto-1/lenguaje-visual-y-sonoro" element={<LenguajeVisualSonoro />} />
-              <Route path="/trimestre-1/lengua/trayecto-1/tiempos-verbales" element={<TiemposVerbales />} />
-              <Route path="/trimestre-1/lengua/trayecto-1/aventura" element={<AventuraMitos />} />
-            </Routes>
+            <ErrorBoundary>
+            <Suspense fallback={<div style={{padding:24}}>Cargando…</div>}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/tercero" element={<Grade />} />
+                <Route path="/trimestre-1" element={<Exams />} />
+                <Route path="/trimestre-1/lengua" element={<LenguaExam />} />
+                <Route path="/trimestre-1/lengua/trayecto-1" element={<Trayecto1 />} />
+                <Route path="/trimestre-1/lengua/trayecto-2" element={<Trayecto2 />} />
+                <Route path="/trimestre-1/lengua/trayecto-3" element={<Trayecto3 />} />
+                <Route path="/trimestre-1/lengua/trayecto-1/mitos-y-leyendas" element={<MitosLeyendas />} />
+                <Route path="/trimestre-1/lengua/trayecto-1/lenguaje-visual-y-sonoro" element={<LenguajeVisualSonoro />} />
+                <Route path="/trimestre-1/lengua/trayecto-1/tiempos-verbales" element={<TiemposVerbales />} />
+                <Route path="/trimestre-1/lengua/trayecto-1/aventura" element={<AventuraMitos />} />
+              </Routes>
+            </Suspense>
+            </ErrorBoundary>
           </div>
         </main>
         <footer className="border-t border-white/60 bg-white/80 backdrop-blur">
