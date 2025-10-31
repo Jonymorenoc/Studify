@@ -1,4 +1,4 @@
-import { cpSync, rmSync, existsSync } from "node:fs";
+import { cpSync, rmSync, existsSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const distDir = resolve("dist");
@@ -11,4 +11,5 @@ if (!existsSync(distDir)) {
 
 rmSync(docsDir, { recursive: true, force: true });
 cpSync(distDir, docsDir, { recursive: true });
+writeFileSync(resolve(docsDir, '.nojekyll'), '');
 console.log('Sincronizado dist/ -> docs/');

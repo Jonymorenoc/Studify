@@ -16,7 +16,7 @@ type JourneyStop = {
   id: string
   title: string
   summary: string
-  startDate: string
+  startDate?: string
   temario?: string[]
   resources?: StopResource[]
   status: JourneyStatus
@@ -29,7 +29,7 @@ const trimesterTabs: { id: TrimesterId; label: string; note: string }[] = [
   {
     id: 'trimestre-1',
     label: 'Trimestre 1',
-    note: 'Este trimestre incluye el trayecto "Hechos de mitos" y nuevas estaciones por desbloquear.',
+    note: 'Tres trayectos activos: mitos, anuncios y cuentos. Elige cualquiera para comenzar.',
   },
   {
     id: 'trimestre-2',
@@ -49,7 +49,6 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     title: 'Trayecto 1. Hechos de mitos',
     summary:
       'Aventura inicial para conocer manifestaciones artisticas, mitos y leyendas. Completa actividades interactivas y gana estrellas.',
-    startDate: '08 septiembre 2025',
     temario: [
       'Manifestaciones artisticas: mitos y leyendas (pag. 30-31)',
       'Lenguaje visual y sonoro (pag. 32-33)',
@@ -63,24 +62,11 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     ],
   },
   {
-    id: 'estacion-1-como-llegamos',
-    title: 'Estacion Lengua 1. Como llegamos?',
-    summary:
-      'Modulo centrado en anuncios publicitarios y etiquetas (paginas 115-121). Incluye versiones digitales, analisis critico y actividades creativas.',
-    startDate: '26 septiembre 2025',
-    temario: ['Anuncios publicitarios (paginas 115-116)', 'Etiquetado de productos (paginas 119-121)'],
-    resources: [{ label: 'Abrir Trayecto 2', to: '/trimestre-1/lengua/trayecto-2', variant: 'primary' }],
-  },
-  {
     id: 'trayecto-2-alimentos',
     title: 'Trayecto 2. Alimentos a la venta',
     summary:
-      'Analiza anuncios publicitarios y etiquetas para tomar decisiones informadas sobre lo que compras.',
-    startDate: '10 octubre 2025',
-    temario: [
-      'Anuncios publicitarios (pag. 115-116)',
-      'Etiquetado de productos (pag. 119-121)',
-    ],
+      'Explora anuncios publicitarios y etiquetas para tomar decisiones informadas sobre lo que compras.',
+    temario: ['Anuncios publicitarios (pag. 115-116)', 'Etiquetado de productos (pag. 119-121)'],
     resources: [{ label: 'Abrir Trayecto 2', to: '/trimestre-1/lengua/trayecto-2', variant: 'primary' }],
   },
   {
@@ -88,25 +74,8 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     title: 'Trayecto 3. Cuentos y descripciones',
     summary:
       'Crea narraciones completas y descripciones ricas en adjetivos basadas en las paginas 150-157.',
-    startDate: '20 octubre 2025',
     temario: ['Texto narrativo (pag. 150-151)', 'Descripciones con adjetivos (pag. 156-157)'],
     resources: [{ label: 'Abrir Trayecto 3', to: '/trimestre-1/lengua/trayecto-3', variant: 'primary' }],
-  },
-  {
-    id: 'estacion-3-tablero',
-    title: 'Estacion Lengua 3. Tablero, dados, accion!',
-    summary:
-      'Juego colaborativo con tablero y dados para repasar vocabulario, tiempos verbales y comprension de historias.',
-    startDate: '07 noviembre 2025',
-    temario: ['Actividad ludica integradora del trimestre (contenido por publicar)'],
-  },
-  {
-    id: 'trayecto-4-basura',
-    title: 'Trayecto 4. Como se ve la basura en mi comunidad?',
-    summary:
-      'Investiga y presenta propuestas sobre el manejo de residuos con enfasis en sustantivos y adjetivos calificativos.',
-    startDate: '21 noviembre 2025',
-    temario: ['Ortografia y gramatica: sustantivos y adjetivos calificativos (pag. 157)'],
   },
 ]
 
@@ -116,8 +85,7 @@ const temarioPrimerTrimestre = [
   'Ortografia y gramatica: tiempos verbales (pag. 37)',
   'Anuncios publicitarios (pag. 115-116)',
   'Etiquetado de productos (pag. 119-121)',
-  'Texto narrativo (pag. 150-151)',
-  'Ortografia y gramatica: sustantivos y adjetivos calificativos (pag. 157)',
+  'Texto narrativo y descripciones (pag. 150-157)',
 ]
 
 export default function Trayecto1() {
@@ -131,11 +99,7 @@ export default function Trayecto1() {
         return { ...stop, status, progress: trayectoProgress }
       }
 
-      if (index === 1 || index === 2 || index === 3) {
-        return { ...stop, status: 'unlocked' }
-      }
-
-      return { ...stop, status: 'locked' }
+      return { ...stop, status: 'unlocked' }
     })
   }, [trayectoProgress])
 
@@ -166,7 +130,7 @@ export default function Trayecto1() {
             </span>
             <h1 className="text-3xl font-semibold text-ink sm:text-4xl">Viaja en el tren de los trayectos</h1>
             <p className="text-sm text-muted">
-              Completa el trayecto "Hechos de mitos" para desbloquear las estaciones siguientes y seguir sumando estrellas.
+              Recorre las aventuras del trimestre a tu ritmo. Cada trayecto suma estrellas y refuerza habilidades distintas.
             </p>
           </div>
           <div className="relative inline-flex h-24 w-24 items-center justify-center rounded-3xl bg-white/80 text-4xl shadow-[0_24px_55px_-36px_rgba(116,95,224,0.8)]">
@@ -292,7 +256,7 @@ function JourneyCard({ stop }: { stop: JourneyStop }) {
     ? 'border-success/40 bg-success/5 text-ink shadow-[0_24px_60px_-46px_rgba(39,174,96,0.4)]'
     : isLocked
       ? 'border-white/60 bg-white/70 text-muted shadow-[0_24px_55px_-48px_rgba(116,95,224,0.25)]'
-      : 'border-primary/30 bg-gradient-to-br from-white via-primary/10 to-primary/20 text-ink shadow-[0_28px_65px_-48px_rgba(116,95,224,1)] hover:-translate-y-1 hover:shadow-[0_36px_85px_-46px_rgba(116,95,224,1)]'
+      : 'border-white/80 bg-white text-ink shadow-[0_28px_65px_-48px_rgba(116,95,224,0.8)] hover:-translate-y-1 hover:shadow-[0_36px_85px_-46px_rgba(116,95,224,1)]'
 
   const badgeIcon = isCompleted ? (
     <CheckCircle2 size={14} />
@@ -310,16 +274,15 @@ function JourneyCard({ stop }: { stop: JourneyStop }) {
       ? 'Proximamente'
       : hasProgress
         ? `En progreso (${stop.progress}%)`
-        : 'Disponible'
+        : 'Listo para jugar'
 
   return (
     <article className={`${cardBase} ${cardVariant}`}>
       <div className="flex items-center justify-between">
-        <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${isCompleted ? 'bg-success/10 text-success' : isLocked ? 'bg-white/80 text-muted' : 'bg-white text-primary'}`}>
+        <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${isCompleted ? 'bg-success/10 text-success' : isLocked ? 'bg-white/80 text-muted' : 'bg-primary/10 text-primary'}`}>
           {badgeIcon}
           {badgeLabel}
         </span>
-        <span className="text-xs font-semibold uppercase tracking-[0.35em] text-muted">Inicio: {stop.startDate}</span>
       </div>
 
       <div className="space-y-2">
