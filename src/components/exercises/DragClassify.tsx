@@ -1,95 +1,139 @@
 import { useMemo, useState } from 'react'
 import { saveProgress } from '../../state/progress'
 
-type Item = { id:string; text:string; group:string }
+type Item = {
+  id: string
+  text: string
+  group: string
+}
 
-export default function DragClassify({ id, groups, items }:{
-  id:string
+type Props = {
+  id: string
   groups: string[]
   items: Item[]
-}){
-  const [bins, setBins] = useState<Record<string, Item[]>>(()=>Object.fromEntries(groups.map(g=>[g,[]])))
-  const [pool, setPool] = useState<Item[]>(items)
+}
+
+const defaultTargetOnEnter = (groups: string[]) => groups[0] ?? 'pool'
+
+export default function DragClassify({ id, groups, items }: Props) {
+  const [placements, setPlacements] = useState<Record<string, string>>(() => {
+    const initial: Record<string, string> = {}
+    items.forEach(item => {
+      initial[item.id] = 'pool'
+    })
+    return initial
+  })
   const [done, setDone] = useState(false)
 
-  const allowDrop = (e: React.DragEvent)=> e.preventDefault()
-  function onDrop(group:string, e: React.DragEvent){
-    const id = e.dataTransfer.getData('text')
-    const it = pool.find(p=>p.id===id) || Object.values(bins).flat().find(p=>p.id===id)
-    if(!it) return
-    setBins(prev=>{
-      const next = structuredClone(prev) as typeof prev
-      // remove from other groups
-      for(const g of Object.keys(next)){
-        next[g] = next[g].filter(p=>p.id!==id)
-      }
-      if(group !== 'pool'){
-        next[group] = [...(next[group] || []), it]
-      }
-      return next
-    })
-    setPool(prev=>{
-      // moving to pool returns the card to the bank; otherwise remove from bank
-      const without = prev.filter(p=>p.id!==id)
-      return group === 'pool' ? [...without, it] : without
-    })
+  const poolItems = useMemo(() => items.filter(item => placements[item.id] === 'pool'), [items, placements])
+  const groupedItems = useMemo(() => {
+    return groups.reduce<Record<string, Item[]>>((acc, group) => {
+      acc[group] = items.filter(item => placements[item.id] === group)
+      return acc
+    }, {})
+  }, [groups, items, placements])
+
+  const score = useMemo(() => {
+    const total = items.length
+    const correct = items.filter(item => placements[item.id] === item.group).length
+    return total ? correct / total : 0
+  }, [items, placements])
+
+  const allowDrop = (event: React.DragEvent) => event.preventDefault()
+
+  const moveItem = (target: string, id: string | null) => {
+    if (!id) return
+    setPlacements(prev => ({ ...prev, [id]: target }))
   }
 
-  const score = useMemo(()=>{
-    const total = items.length
-    const correct = Object.entries(bins).reduce((acc,[g,arr])=>acc + arr.filter(a=>a.group===g).length,0)
-    return total? correct/total : 0
-  },[bins, items])
+  const handleDrop = (target: string, event: React.DragEvent) => {
+    event.preventDefault()
+    const draggedId = event.dataTransfer.getData('text')
+    moveItem(target, draggedId)
+  }
 
-  function finish(){
+  const handleKeyMove = (target: string, id: string) => {
+    moveItem(target, id)
+  }
+
+  const finish = () => {
     setDone(true)
-    saveProgress(id,{score, stars: score>0.8?3:score>0.5?2:1, attempts:1, completedAt:Date.now()})
+    const stars = score > 0.8 ? 3 : score > 0.5 ? 2 : 1
+    saveProgress(id, { score, stars, attempts: 1, completedAt: Date.now() })
   }
 
   return (
     <div className="grid cols-2">
-      <div className="card" aria-label="banco de tarjetas" onDragOver={allowDrop} onDrop={e=>onDrop('pool',e)}>
+      <div
+        className="card"
+        aria-label="Banco de tarjetas"
+        onDragOver={allowDrop}
+        onDrop={event => handleDrop('pool', event)}
+      >
         <h4 className="title">Tarjetas</h4>
-        <div className="grid" style={{gridTemplateColumns:'repeat(2,minmax(0,1fr))', gap:8}}>
-          {pool.map(it=> (
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 8 }}>
+          {poolItems.map(item => (
             <div
-              key={it.id}
-              draggable
+              key={item.id}
               role="button"
               tabIndex={0}
-              aria-label={`Tarjeta ${it.text}`}
-              onKeyDown={e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); /* no-op for keyboard drag */ } }}
-              onDragStart={e=>e.dataTransfer.setData('text', it.id)}
-              style={{padding:8, borderRadius:12, border:'1px dashed #334155', textAlign:'center'}}>
-              {it.text}
+              aria-label={`Tarjeta ${item.text}`}
+              draggable
+              onDragStart={event => event.dataTransfer.setData('text', item.id)}
+              onKeyDown={event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  handleKeyMove(defaultTargetOnEnter(groups), item.id)
+                }
+              }}
+              style={{ padding: 8, borderRadius: 12, border: '1px dashed #334155', textAlign: 'center' }}
+            >
+              {item.text}
             </div>
           ))}
         </div>
       </div>
-      <div className="grid" style={{gap:12}}>
-        {groups.map(g => (
-          <div key={g} className="card" role="region" aria-label={`Destino ${g}`} onDragOver={allowDrop} onDrop={e=>onDrop(g,e)}>
-            <h4 className="title">{g}</h4>
-            <div className="row" style={{flexWrap:'wrap', gap:8}}>
-              {bins[g].map(it=> (
+      <div className="grid" style={{ gap: 12 }}>
+        {groups.map(group => (
+          <div
+            key={group}
+            className="card"
+            role="region"
+            aria-label={`Destino ${group}`}
+            onDragOver={allowDrop}
+            onDrop={event => handleDrop(group, event)}
+          >
+            <h4 className="title">{group}</h4>
+            <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>
+              {groupedItems[group]?.map(item => (
                 <span
-                  key={it.id}
+                  key={item.id}
                   role="button"
                   tabIndex={0}
                   draggable
-                  onKeyDown={e=>{ if(e.key==='Backspace' || e.key==='Delete'){ onDrop('pool', { ...e, dataTransfer: { getData:()=>it.id } } as unknown as React.DragEvent) }}}
-                  onDragStart={e=>e.dataTransfer.setData('text', it.id)}
+                  onDragStart={event => event.dataTransfer.setData('text', item.id)}
+                  onKeyDown={event => {
+                    if (event.key === 'Backspace' || event.key === 'Delete') {
+                      event.preventDefault()
+                      handleKeyMove('pool', item.id)
+                    }
+                  }}
                   className="tag"
-                >{it.text}</span>
+                >
+                  {item.text}
+                </span>
               ))}
             </div>
           </div>
         ))}
         <div className="row">
-          <button className="btn" onClick={finish} disabled={done}>Comprobar</button>
-          {done && <span>Resultado: {(score*100).toFixed(0)}%</span>}
+          <button className="btn" onClick={finish} disabled={done}>
+            Comprobar
+          </button>
+          {done && <span>Resultado: {(score * 100).toFixed(0)}%</span>}
         </div>
       </div>
     </div>
   )
 }
+
