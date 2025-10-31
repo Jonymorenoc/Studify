@@ -1,6 +1,8 @@
 # Studify (Trimestre 1 · Lengua)
 
-Mobile‑first learning app scaffolded with Vite + React. Español por defecto.
+Enlace a GitHub Pages: https://jonymorenoc.github.io/Studify/
+
+Mobile-first learning app scaffolded with Vite + React. Español por defecto.
 
 Inicio rápido
 
@@ -14,3 +16,5 @@ Características
 - Pistas ligeras y retro inmediata
 - Progreso con estrellas guardado en `localStorage`
 - Lottie en `public/lottie/star.json`
+- Blueprint interactivo para Estacion 2 (anuncios y etiquetas) en `src/flow/trimestre1Estacion2Flow.ts`
+- Blueprint interactivo para Trayecto 3 (cuentos y descripciones) en `src/flow/trimestre1Trayecto3Flow.ts`

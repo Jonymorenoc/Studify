@@ -46,7 +46,7 @@ export default function TypeAnswer({ id, prompt, correct, hint }: Props) {
         </button>
         {submitted && (
           <span className={`text-sm font-semibold ${isCorrect ? 'text-success' : 'text-error'}`}>
-            {isCorrect ? '¡Bien hecho!' : 'Casi, revisa la pista y ajusta tu respuesta.'}
+            {isCorrect ? 'Buen trabajo!' : 'Casi, revisa la pista y ajusta tu respuesta.'}
           </span>
         )}
       </div>

@@ -25,11 +25,12 @@ export default function MitosLeyendas() {
           id="trimestre1.lengua.trayecto1.mitos.drag1"
           groups={['Mito', 'Leyenda']}
           items={[
-            { id: '1', text: 'El conejo en la Luna', group: 'Leyenda' },
-            { id: '2', text: 'El Nahual', group: 'Leyenda' },
-            { id: '3', text: 'La Llorona', group: 'Leyenda' },
-            { id: '4', text: 'La creacion del Sol y la Luna', group: 'Mito' },
-            { id: '5', text: 'El origen del maiz', group: 'Mito' },
+            { id: '1', text: 'El Charro Negro', group: 'Leyenda' },
+            { id: '2', text: 'Xochiquetzal', group: 'Mito' },
+            { id: '3', text: 'El conejo en la Luna', group: 'Leyenda' },
+            { id: '4', text: 'El aguila y la serpiente', group: 'Mito' },
+            { id: '5', text: 'La Malinche', group: 'Leyenda' },
+            { id: '6', text: 'La Nahuala', group: 'Leyenda' },
           ]}
         />
       </ExerciseCard>
@@ -50,6 +51,22 @@ export default function MitosLeyendas() {
             },
             { id: 'c', text: 'no transmiten valores de la comunidad.' },
           ]}
+        />
+      </ExerciseCard>
+
+      <ExerciseCard
+        title="El mito del Sol y la Luna"
+        subtitle="Lee la historia y responde como se construye el mensaje."
+      >
+        <MultipleChoice
+          id="trimestre1.lengua.trayecto1.mitos.mc2"
+          prompt="Segun el mito, cual valor representa Nanahuatzin al lanzarse a la hoguera?"
+          options={[
+            { id: 'a', text: 'Orgullo y deseo de fama.' },
+            { id: 'b', text: 'Humildad y valentia para servir.', correct: true },
+            { id: 'c', text: 'Obediencia sin pensar.' },
+          ]}
+          hint="Recuerda que Nanahuatzin se ofrecio aun cuando era el menos esperado."
         />
       </ExerciseCard>
     </div>

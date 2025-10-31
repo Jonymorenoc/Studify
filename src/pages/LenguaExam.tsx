@@ -1,18 +1,21 @@
 import Lottie from 'lottie-react'
 import { Link } from 'react-router-dom'
-import { ArrowRightCircle, Sparkles } from 'lucide-react'
+import { ArrowRightCircle, ListCheck, Sparkles, Star } from 'lucide-react'
 import ProgressBar from '../components/ProgressBar'
 import { percentCompleted, getAll } from '../state/progress'
 import { adventureSteps, type AdventureStep } from '../flow/adventureData'
 import starAnimation from '../assets/lottie/star.json'
 
 const statIcons = {
-  Ejercicios: '🧠',
-  Estrellas: '🌟',
+  Ejercicios: <ListCheck size={18} />,
+  Estrellas: <Star size={18} />,
 }
 
 export default function LenguaExam() {
-  const pct = percentCompleted('trimestre1.lengua.trayecto1')
+  const trayecto1Progress = percentCompleted('trimestre1.lengua.trayecto1')
+  const trayecto2Progress = percentCompleted('trimestre1.lengua.trayecto2')
+  const trayecto3Progress = percentCompleted('trimestre1.lengua.trayecto3')
+
   const all = getAll()
   const completed = adventureSteps.filter((step: AdventureStep) => all[`aventura.${step.id}`]?.score >= 1).length
   const earnedStars = adventureSteps.reduce(
@@ -33,8 +36,8 @@ export default function LenguaExam() {
         to="/trimestre-1"
         className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:-translate-y-0.5 hover:text-primary-dark"
       >
-        <span aria-hidden>←</span>
-        Volver a exámenes
+        <span aria-hidden>{'<'}</span>
+        Volver a examenes
       </Link>
 
       <section className="overflow-hidden rounded-[32px] border border-white/70 bg-gradient-to-r from-white via-[#f6f1ff] to-[#e5f5ff] p-6 shadow-[0_32px_80px_-48px_rgba(116,95,224,0.9)] sm:p-9">
@@ -45,51 +48,59 @@ export default function LenguaExam() {
               Examen de Lengua
             </span>
             <div className="space-y-3">
-              <h1 className="text-3xl font-semibold text-ink sm:text-4xl">Completa los ejercicios y gana estrellas</h1>
+              <h1 className="text-3xl font-semibold text-ink sm:text-4xl">Completa los trayectos y gana estrellas</h1>
               <p className="text-sm text-muted">
-                Trayecto 1 – Manifestaciones artísticas, mitos y leyendas. Diseñado para estudiantes de 6 a 9 años con actividades cortas y divertidas.
+                Recorre actividades cortas inspiradas en el libro: mitos y leyendas (pag. 30-37) y anuncios con etiquetas (pag. 115-121).
               </p>
             </div>
             <div className="grid gap-3 rounded-[28px] border border-white/70 bg-white/90 p-5 shadow-[0_24px_60px_-48px_rgba(116,95,224,0.7)] sm:grid-cols-[1.1fr,0.9fr] sm:items-center">
               <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted">Progreso total</p>
-                <h2 className="text-lg font-semibold text-ink">Estás avanzando</h2>
-                <p className="text-xs text-muted">
-                  ¡Cada ejercicio completado te da estrellas! Llega a 100% para desbloquear una celebración animada.
-                </p>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted">Progreso general</p>
+                <h2 className="text-lg font-semibold text-ink">Estan avanzando</h2>
+                <p className="text-xs text-muted">Completa los retos para desbloquear celebraciones y sumar estrellas al marcador.</p>
               </div>
               <div className="space-y-2">
-                <ProgressBar value={pct} />
-                <p className="text-right text-xs font-semibold text-primary">{pct}% completo</p>
+                <ProgressBar value={trayecto1Progress} />
+                <p className="text-right text-xs font-semibold text-primary">Trayecto 1 {trayecto1Progress}%</p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/trimestre-1/lengua/trayecto-1"
-                className="btn px-6 py-3 text-sm"
-              >
-                <ArrowRightCircle size={16} />
-                Comenzar trayecto
-              </Link>
-              <Link
-                to="/trimestre-1/lengua/trayecto-1/aventura"
-                className="btn secondary text-sm"
-              >
-                <span aria-hidden>🎮</span>
-                Ir a la aventura
-              </Link>
+            <div className="grid gap-3 rounded-[24px] border border-white/70 bg-white/90 p-4 shadow-[0_18px_45px_-42px_rgba(116,95,224,0.6)] md:grid-cols-3">
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-ink">Trayecto 1. Hechos de mitos</h3>
+                <ProgressBar value={trayecto1Progress} />
+                <div className="flex flex-wrap gap-3">
+                  <Link to="/trimestre-1/lengua/trayecto-1" className="btn px-5 py-2 text-xs">
+                    <ArrowRightCircle size={14} /> Abrir Trayecto 1
+                  </Link>
+                  <Link to="/trimestre-1/lengua/trayecto-1/aventura" className="btn secondary text-xs">
+                    Explorar aventura
+                  </Link>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-ink">Trayecto 2. Anuncios y etiquetas</h3>
+                <ProgressBar value={trayecto2Progress} />
+                <div className="flex flex-wrap gap-3">
+                  <Link to="/trimestre-1/lengua/trayecto-2" className="btn px-5 py-2 text-xs">
+                    <ArrowRightCircle size={14} /> Abrir Trayecto 2
+                  </Link>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-ink">Trayecto 3. Cuentos y descripciones</h3>
+                <ProgressBar value={trayecto3Progress} />
+                <div className="flex flex-wrap gap-3">
+                  <Link to="/trimestre-1/lengua/trayecto-3" className="btn px-5 py-2 text-xs">
+                    <ArrowRightCircle size={14} /> Abrir Trayecto 3
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
           <div className="relative flex items-center justify-center">
             <div className="w-40">
               <Lottie animationData={starAnimation} loop />
             </div>
-            <span className="floating-emoji animation-delay-200 left-8 top-6 text-3xl" aria-hidden>
-              🌟
-            </span>
-            <span className="floating-emoji animation-delay-400 -bottom-4 right-10 text-3xl" aria-hidden>
-              📚
-            </span>
           </div>
         </div>
 
@@ -99,7 +110,7 @@ export default function LenguaExam() {
               key={stat.label}
               className="flex items-center gap-3 rounded-[24px] border border-white/70 bg-white/85 px-4 py-3 text-sm font-semibold text-ink shadow-[0_18px_45px_-42px_rgba(116,95,224,0.6)]"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/15 text-lg">
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/15 text-primary">
                 {statIcons[stat.label as keyof typeof statIcons]}
               </span>
               <div>

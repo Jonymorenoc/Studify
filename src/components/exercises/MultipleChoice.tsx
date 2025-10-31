@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { saveProgress } from '../../state/progress'
 
-type Option = { id: string; text: string; correct?: boolean }
+type Option = { id: string; text: string; correct?: boolean; hint?: string }
 
 type Props = {
   id: string
@@ -57,6 +57,7 @@ export default function MultipleChoice({ id, prompt, options, onDone, hint }: Pr
                 className="sr-only"
               />
               <span>{option.text}</span>
+              {option.hint && !submitted && <span className="text-xs text-muted">{option.hint}</span>}
             </label>
           )
         })}
@@ -72,7 +73,7 @@ export default function MultipleChoice({ id, prompt, options, onDone, hint }: Pr
         </button>
         {submitted && (
           <span className={`text-sm font-semibold ${score ? 'text-success' : 'text-error'}`}>
-            {score ? '¡Correcto!' : 'Revisa la pista y vuelve a intentarlo.'}
+            {score ? 'Correcto!' : 'Revisa la pista y vuelve a intentarlo.'}
           </span>
         )}
       </div>

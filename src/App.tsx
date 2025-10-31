@@ -5,6 +5,8 @@ import Grade from './pages/Grade'
 import Exams from './pages/Exams'
 import LenguaExam from './pages/LenguaExam'
 import Trayecto1 from './pages/Trayecto1'
+import Trayecto2 from './pages/Trayecto2'
+import Trayecto3 from './pages/Trayecto3'
 import MitosLeyendas from './pages/ejercicios/MitosLeyendas'
 import LenguajeVisualSonoro from './pages/ejercicios/LenguajeVisualSonoro'
 import TiemposVerbales from './pages/ejercicios/TiemposVerbales'
@@ -53,6 +55,8 @@ function App() {
               <Route path="/trimestre-1" element={<Exams />} />
               <Route path="/trimestre-1/lengua" element={<LenguaExam />} />
               <Route path="/trimestre-1/lengua/trayecto-1" element={<Trayecto1 />} />
+              <Route path="/trimestre-1/lengua/trayecto-2" element={<Trayecto2 />} />
+              <Route path="/trimestre-1/lengua/trayecto-3" element={<Trayecto3 />} />
               <Route path="/trimestre-1/lengua/trayecto-1/mitos-y-leyendas" element={<MitosLeyendas />} />
               <Route path="/trimestre-1/lengua/trayecto-1/lenguaje-visual-y-sonoro" element={<LenguajeVisualSonoro />} />
               <Route path="/trimestre-1/lengua/trayecto-1/tiempos-verbales" element={<TiemposVerbales />} />
@@ -71,4 +75,3 @@ function App() {
 }
 
 export default App
-

@@ -1,8 +1,8 @@
+import Lottie from 'lottie-react'
 import Breadcrumbs from '../../components/Breadcrumbs'
 import ExerciseCard from '../../components/ExerciseCard'
 import TypeAnswer from '../../components/exercises/TypeAnswer'
 import MultipleChoice from '../../components/exercises/MultipleChoice'
-import Lottie from 'lottie-react'
 import star from '../../assets/lottie/star.json'
 
 export default function LenguajeVisualSonoro() {
@@ -12,7 +12,7 @@ export default function LenguajeVisualSonoro() {
         items={[
           { label: 'Studify Home', to: '/' },
           { label: 'Tercero de primaria', to: '/tercero' },
-          { label: 'Exámenes Trimestrales · 1er Trimestre', to: '/trimestre-1' },
+          { label: 'Examenes Trimestrales - 1er Trimestre', to: '/trimestre-1' },
           { label: 'Examen Lengua', to: '/trimestre-1/lengua' },
           { label: 'Trayecto 1', to: '/trimestre-1/lengua/trayecto-1' },
           { label: 'Lenguaje visual y sonoro' },
@@ -23,7 +23,7 @@ export default function LenguajeVisualSonoro() {
         <div>
           <h3 className="text-2xl font-semibold text-slate-100">Lenguaje visual y sonoro</h3>
           <p className="mt-2 text-sm text-slate-400">
-            Los recursos visuales (color, luz, símbolos) y sonoros (ritmo, melodía) enriquecen la narración y transmiten emociones.
+            Los recursos visuales (color, luz, simbolos) y sonoros (ritmo, melodia) enriquecen la narracion y transmiten emociones.
           </p>
         </div>
         <Lottie animationData={star} loop style={{ width: 96 }} />
@@ -37,26 +37,38 @@ export default function LenguajeVisualSonoro() {
           id="trimestre1.lengua.trayecto1.visual.mc1"
           prompt="Redacta un eslogan de 3 a 6 palabras que invite a cuidar al ajolote."
           correct={/ajolote|xoloatl/i}
-          hint="Incluye una acción y el nombre del ajolote."
+          hint="Incluye el nombre del ajolote y una accion que motive."
         />
       </ExerciseCard>
 
       <ExerciseCard
         title="Observa y responde"
-        subtitle="¿Qué elemento visual ayuda a comunicar una idea?"
+        subtitle="Que elemento visual ayuda a comunicar una idea?"
       >
         <MultipleChoice
           id="trimestre1.lengua.trayecto1.visual.mc2"
-          prompt="En una imagen, ¿qué recurso visual transmite emociones mediante luz y color?"
+          prompt="En una imagen, cual recurso visual transmite emociones mediante luz y color?"
           options={[
-            { id: 'a', text: 'La puntuación de un texto.' },
+            { id: 'a', text: 'La puntuacion de un texto.' },
             {
               id: 'b',
-              text: 'La composición y los detalles visuales.',
+              text: 'La composicion y los detalles visuales.',
               correct: true,
             },
-            { id: 'c', text: 'El número de personajes dibujados.' },
+            { id: 'c', text: 'El numero de personajes dibujados.' },
           ]}
+        />
+      </ExerciseCard>
+
+      <ExerciseCard
+        title="Imaginar la escena sonora"
+        subtitle="Propone un sonido o instrumento que acompanaria la cancion de La Llorona."
+      >
+        <TypeAnswer
+          id="trimestre1.lengua.trayecto1.visual.txt2"
+          prompt="Que sonido, ritmo o instrumento agregarias para reforzar la emocion del texto?"
+          correct={/.+/}
+          hint="Piensa en instrumentos melancolicos como flauta, violin o arpa."
         />
       </ExerciseCard>
     </div>

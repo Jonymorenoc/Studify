@@ -1,51 +1,61 @@
 import { Link } from 'react-router-dom'
-import { BookMarked, Lock, Star } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { BookMarked, BookOpen, Calculator, FlaskConical, Headphones, Languages, Lock, PenLine, Star } from 'lucide-react'
 import ProgressBar from '../components/ProgressBar'
 import { percentCompleted } from '../state/progress'
 
-const exams = [
+type ExamCard = {
+  title: string
+  description: string
+  language: string
+  to?: string
+  locked: boolean
+  icon: LucideIcon
+}
+
+const exams: ExamCard[] = [
   {
     title: 'Examen de Lengua',
-    description: 'Trayecto 1 · Mitos y leyendas',
+    description: 'Trayecto 1. Hechos de mitos',
     language: 'SPA',
     to: '/trimestre-1/lengua',
     locked: false,
-    icon: '📖',
+    icon: BookOpen,
   },
   {
     title: 'Phonology (Phonics & Vocabulary)',
-    description: 'ENG · Próximamente',
+    description: 'ENG - Proximamente',
     language: 'ENG',
     locked: true,
-    icon: '🔤',
+    icon: Languages,
   },
   {
-    title: 'Matemáticas',
-    description: 'SPA · Próximamente',
+    title: 'Matematicas',
+    description: 'SPA - Proximamente',
     language: 'SPA',
     locked: true,
-    icon: '🧮',
+    icon: Calculator,
   },
   {
     title: 'Language (Grammar)',
-    description: 'ENG · Próximamente',
+    description: 'ENG - Proximamente',
     language: 'ENG',
     locked: true,
-    icon: '✏️',
+    icon: PenLine,
   },
   {
     title: 'Ciencias',
-    description: 'SPA · Próximamente',
+    description: 'SPA - Proximamente',
     language: 'SPA',
     locked: true,
-    icon: '🔬',
+    icon: FlaskConical,
   },
   {
     title: 'Listening & Reading',
-    description: 'ENG · Próximamente',
+    description: 'ENG - Proximamente',
     language: 'ENG',
     locked: true,
-    icon: '🎧',
+    icon: Headphones,
   },
 ]
 
@@ -58,7 +68,7 @@ export default function Exams() {
         to="/tercero"
         className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:-translate-y-0.5 hover:text-primary-dark"
       >
-        <span aria-hidden>←</span>
+        <span aria-hidden>{'<'}</span>
         Volver al grado
       </Link>
 
@@ -69,7 +79,7 @@ export default function Exams() {
               <Star size={14} />
               Primer trimestre
             </span>
-            <h1 className="text-3xl font-semibold text-ink sm:text-4xl">Exámenes trimestrales</h1>
+            <h1 className="text-3xl font-semibold text-ink sm:text-4xl">Examenes trimestrales</h1>
             <p className="text-sm text-muted">
               Selecciona un examen disponible y completa los juegos para ganar estrellas y medallas brillantes.
             </p>
@@ -78,7 +88,7 @@ export default function Exams() {
           <div className="grid gap-4 rounded-[28px] border border-white/70 bg-white/90 p-5 shadow-[0_24px_60px_-48px_rgba(116,95,224,0.7)] sm:grid-cols-[1.1fr,0.9fr] sm:items-center">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted">Progreso general</p>
-              <h2 className="text-lg font-semibold text-ink">Trayecto 1 · Lengua</h2>
+              <h2 className="text-lg font-semibold text-ink">Trayecto 1 - Lengua</h2>
               <p className="text-xs text-muted">Sigue completando ejercicios para desbloquear nuevas sorpresas.</p>
             </div>
             <div className="space-y-2">
@@ -98,8 +108,8 @@ export default function Exams() {
             >
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-base font-semibold text-muted">
-                  <span aria-hidden className="text-2xl">
-                    {exam.icon}
+                  <span aria-hidden className="text-primary/40">
+                    <exam.icon size={22} />
                   </span>
                   {exam.title}
                 </span>
@@ -118,8 +128,8 @@ export default function Exams() {
             >
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-base font-semibold text-ink">
-                  <span aria-hidden className="text-2xl">
-                    {exam.icon}
+                  <span aria-hidden className="text-primary">
+                    <exam.icon size={22} />
                   </span>
                   {exam.title}
                 </span>
@@ -130,7 +140,7 @@ export default function Exams() {
               <p className="text-xs text-muted">{exam.description}</p>
               <span className="btn secondary w-fit text-sm">
                 <BookMarked size={16} />
-                ¡Comenzar!
+                Comenzar
               </span>
               <span
                 aria-hidden
