@@ -19,13 +19,13 @@ export default function Trayecto3() {
         ]}
       />
 
-      <section className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-6 shadow-lg ring-1 ring-white/5 md:flex-row md:items-center md:justify-between">
+      <section className="flex flex-col gap-4 rounded-3xl border border-primary/15 bg-gradient-to-r from-white via-surface to-accent/10 px-6 py-6 shadow-[0_28px_70px_-48px_rgba(116,95,224,0.45)] md:flex-row md:items-center md:justify-between">
         <div className="space-y-3">
-          <h1 className="text-2xl font-semibold text-slate-100">Cuentos y descripciones</h1>
-          <p className="text-sm text-slate-400">
+          <h1 className="text-2xl font-semibold text-ink">Cuentos y descripciones</h1>
+          <p className="text-sm text-muted">
             Aprende a reconocer la estructura del texto narrativo y describe personajes usando adjetivos precisos.
           </p>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-muted">
             Referencia: paginas 150 a 157 del libro. Completa cada reto para sumar estrellas.
           </p>
         </div>

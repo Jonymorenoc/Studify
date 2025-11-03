@@ -19,10 +19,10 @@ export default function LenguajeVisualSonoro() {
         ]}
       />
 
-      <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-6 shadow-lg ring-1 ring-white/5 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-3xl border border-primary/15 bg-gradient-to-r from-white via-surface to-secondary/10 px-6 py-6 shadow-[0_28px_70px_-48px_rgba(116,95,224,0.45)] md:flex-row md:items-center md:justify-between">
         <div>
-          <h3 className="text-2xl font-semibold text-slate-100">Lenguaje visual y sonoro</h3>
-          <p className="mt-2 text-sm text-slate-400">
+          <h3 className="text-2xl font-semibold text-ink">Lenguaje visual y sonoro</h3>
+          <p className="mt-2 text-sm text-muted">
             Los recursos visuales (color, luz, simbolos) y sonoros (ritmo, melodia) enriquecen la narracion y transmiten emociones.
           </p>
         </div>

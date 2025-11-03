@@ -41,7 +41,7 @@ body {
 
 @layer components {
   .card {
-    @apply rounded-3xl border border-white/70 bg-surface-soft px-6 py-6 shadow-[0_24px_45px_-24px_rgba(127,107,255,0.45)];
+    @apply rounded-3xl border border-primary/20 bg-surface px-6 py-6 shadow-[0_24px_45px_-24px_rgba(127,107,255,0.45)];
   }
 
   .row {
