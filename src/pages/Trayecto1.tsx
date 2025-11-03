@@ -50,9 +50,9 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     summary:
       'Aventura inicial para conocer manifestaciones artisticas, mitos y leyendas. Completa actividades interactivas y gana estrellas.',
     temario: [
-      'Manifestaciones artisticas: mitos y leyendas (pag. 30-31)',
-      'Lenguaje visual y sonoro (pag. 32-33)',
-      'Ortografia y gramatica: tiempos verbales (pag. 37)',
+      'Manifestaciones artisticas - mitos y leyendas (p.30-31)',
+      'Lenguaje visual y sonoro (p.32-33)',
+      'Ortografia y gramatica: tiempos verbales (p.37)',
     ],
     resources: [
       { label: 'Aventura interactiva', to: '/trimestre-1/lengua/trayecto-1/aventura', variant: 'primary' },
@@ -66,7 +66,7 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     title: 'Trayecto 2. Alimentos a la venta',
     summary:
       'Explora anuncios publicitarios y etiquetas para tomar decisiones informadas sobre lo que compras.',
-    temario: ['Anuncios publicitarios (pag. 115-116)', 'Etiquetado de productos (pag. 119-121)'],
+    temario: ['Anuncios publicitarios (p.115-116)', 'Etiquetado de productos (p.119-121)'],
     resources: [{ label: 'Abrir Trayecto 2', to: '/trimestre-1/lengua/trayecto-2', variant: 'primary' }],
   },
   {
@@ -74,18 +74,22 @@ const trimesterOneStops: Omit<JourneyStop, 'status'>[] = [
     title: 'Trayecto 3. Cuentos y descripciones',
     summary:
       'Crea narraciones completas y descripciones ricas en adjetivos basadas en las paginas 150-157.',
-    temario: ['Texto narrativo (pag. 150-151)', 'Descripciones con adjetivos (pag. 156-157)'],
+    temario: [
+      'Texto narrativo (p.150-151)',
+      'Ortografia y gramatica: Sustantivos y adjetivos calificativos (p.157)',
+    ],
     resources: [{ label: 'Abrir Trayecto 3', to: '/trimestre-1/lengua/trayecto-3', variant: 'primary' }],
   },
 ]
 
 const temarioPrimerTrimestre = [
-  'Manifestaciones artisticas: mitos y leyendas (pag. 30-31)',
-  'Lenguaje visual y sonoro (pag. 32-33)',
-  'Ortografia y gramatica: tiempos verbales (pag. 37)',
-  'Anuncios publicitarios (pag. 115-116)',
-  'Etiquetado de productos (pag. 119-121)',
-  'Texto narrativo y descripciones (pag. 150-157)',
+  'Manifestaciones artisticas - mitos y leyendas (p.30-31) - Trayecto 1',
+  'Lenguaje visual y sonoro (p.32-33) - Trayecto 1',
+  'Ortografia y gramatica: tiempos verbales (p.37) - Trayecto 1',
+  'Anuncios publicitarios (p.115-116) - Trayecto 2',
+  'Etiquetado de productos (p.119-121) - Trayecto 2',
+  'Texto narrativo (p.150-151) - Trayecto 3',
+  'Ortografia y gramatica: Sustantivos y adjetivos calificativos (p.157) - Trayecto 3',
 ]
 
 export default function Trayecto1() {

@@ -26,14 +26,14 @@ export default function TypeAnswer({ id, prompt, correct, hint }: Props) {
   }
 
   return (
-    <div className="space-y-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 shadow-inner">
-      <label className="text-sm font-semibold text-slate-100">{prompt}</label>
+    <div className="space-y-3 rounded-3xl border border-primary/15 bg-white px-5 py-5 shadow-[0_18px_45px_-32px_rgba(67,61,102,0.35)]">
+      <label className="text-sm font-semibold text-ink">{prompt}</label>
       <input
         value={value}
         onChange={event => setValue(event.target.value)}
         placeholder="Escribe tu respuesta"
         disabled={submitted}
-        className="w-full rounded-2xl border border-white/10 bg-surface-alt/80 px-4 py-3 text-sm text-slate-100 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-60"
+        className="w-full rounded-2xl border border-primary/20 bg-white px-4 py-3 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-60"
       />
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <button
@@ -50,7 +50,7 @@ export default function TypeAnswer({ id, prompt, correct, hint }: Props) {
           </span>
         )}
       </div>
-      {!submitted && hint && <p className="text-xs text-slate-400">Pista: {hint}</p>}
+      {!submitted && hint && <p className="text-xs text-muted">Pista: {hint}</p>}
     </div>
   )
 }

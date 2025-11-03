@@ -26,8 +26,8 @@ export default function MultipleChoice({ id, prompt, options, onDone, hint }: Pr
   }
 
   return (
-    <div className="space-y-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 shadow-inner">
-      <p className="text-sm text-slate-200">{prompt}</p>
+    <div className="space-y-4 rounded-3xl border border-primary/15 bg-white px-5 py-5 shadow-[0_18px_45px_-32px_rgba(67,61,102,0.35)]">
+      <p className="text-sm font-medium text-ink">{prompt}</p>
       <div className="space-y-3">
         {options.map(option => {
           const isChecked = picked === option.id
@@ -39,12 +39,12 @@ export default function MultipleChoice({ id, prompt, options, onDone, hint }: Pr
               key={option.id}
               className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
                 isCorrectChoice
-                  ? 'border-success/60 bg-success/10 text-success'
-                  : isWrongChoice
-                    ? 'border-error/60 bg-error/10 text-error'
+                  ? 'border-success bg-success/10 text-success'
+                : isWrongChoice
+                    ? 'border-error bg-error/10 text-error'
                     : isChecked
-                      ? 'border-primary/60 bg-primary/15 text-primary'
-                      : 'border-white/10 bg-white/5 text-slate-100 hover:border-primary/40 hover:bg-primary/10'
+                      ? 'border-primary bg-primary/15 text-primary'
+                      : 'border-primary/20 bg-surface text-ink hover:border-primary/40 hover:bg-primary/10'
               }`}
             >
               <input
@@ -77,7 +77,7 @@ export default function MultipleChoice({ id, prompt, options, onDone, hint }: Pr
           </span>
         )}
       </div>
-      {!submitted && hint && <p className="text-xs text-slate-400">Pista: {hint}</p>}
+      {!submitted && hint && <p className="text-xs text-muted">Pista: {hint}</p>}
     </div>
   )
 }

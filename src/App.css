@@ -1,6 +1,6 @@
 :root{
   --bg:#fff8f0;
-  --card:#ffffff;
+  --card:#f4f1ff;
   --muted:#5b6777;
   --primary:#6dd3c9;   /* aqua */
   --primary-2:#55b8f8; /* sky */
@@ -32,8 +32,8 @@ body{
   background:var(--card);
   border-radius:18px;
   padding:16px;
-  box-shadow:0 8px 22px rgba(24,49,83,.08);
-  border:1px solid rgba(24,49,83,.06);
+  box-shadow:0 12px 32px rgba(103,81,255,.1);
+  border:1px solid rgba(127,107,255,.18);
 }
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
