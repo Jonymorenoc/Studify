@@ -45,9 +45,10 @@ const exams: ExamCard[] = [
   },
   {
     title: 'Ciencias',
-    description: 'SPA - Proximamente',
+    description: 'Tercer grado - Primer trimestre',
     language: 'SPA',
-    locked: true,
+    to: '/trimestre-1/ciencias',
+    locked: false,
     icon: FlaskConical,
   },
   {
