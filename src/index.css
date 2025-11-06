@@ -101,11 +101,26 @@ body {
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .floating-emoji {
   position: absolute;
   display: inline-flex;
   animation: floaty 6s ease-in-out infinite;
   filter: drop-shadow(0 8px 18px rgba(116, 95, 224, 0.25));
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
 }
 
 .animation-delay-200 {
@@ -114,6 +129,13 @@ body {
 
 .animation-delay-400 {
   animation-delay: 0.4s;
+}
+
+/* Mobile-first safe area for iOS devices */
+@supports (padding: max(0px)) {
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
 }
 
 .hint-popover {
