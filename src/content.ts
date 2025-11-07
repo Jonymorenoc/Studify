@@ -498,3 +498,291 @@ export const trayectoTitles: Record<Trayecto, string> = {
   2: "Animales",
   3: "Mezclas y Salud"
 };
+
+// ==================== PANTALLAS ADICIONALES ====================
+export const EXTRA_SCREENS: Array<
+  LearnScreen | QuizChoice | QuizDrag | QuizMatch | QuizHighlight | QuizReflect
+> = [
+  // ======== TRAYECTO 1 — LUNA ========
+  {
+    id: "t1-fases-aprende-sombra",
+    trayecto: 1,
+    tema: "Fases de la Luna",
+    emoji: "🌙",
+    kind: "learn",
+    html:
+      "<p><b>¿Por qué cambia la 'forma' de la Luna?</b> Porque vemos distinta <b>parte iluminada</b> por el Sol.</p>" +
+      "<ul><li>Si vemos poca luz → fase <i>delgada</i>.</li><li>Si vemos toda la luz → <b>luna llena</b>.</li><li>La sombra es la parte que no recibe luz.</li></ul>"
+  },
+  {
+    id: "t1-fases-empata-descripcion",
+    trayecto: 1,
+    tema: "Fases de la Luna",
+    emoji: "🌙",
+    kind: "quiz-match",
+    prompt: "Une cada fase con su descripción.",
+    left: [
+      { id: "nueva", label: "Luna nueva" },
+      { id: "crec", label: "Cuarto creciente" },
+      { id: "llena", label: "Luna llena" },
+      { id: "meng", label: "Cuarto menguante" }
+    ],
+    right: [
+      { id: "d-nueva", label: "No se ve la parte iluminada." },
+      { id: "d-crec", label: "Vemos la mitad derecha iluminada." },
+      { id: "d-llena", label: "Se ve completamente iluminada." },
+      { id: "d-meng", label: "Vemos la mitad izquierda iluminada." }
+    ],
+    pairs: {
+      nueva: "d-nueva",
+      crec: "d-crec",
+      llena: "d-llena",
+      meng: "d-meng"
+    },
+    explain: "Cada fase describe cuánta luz vemos desde la Tierra."
+  },
+  {
+    id: "t1-fases-orden-inverso",
+    trayecto: 1,
+    tema: "Fases de la Luna",
+    emoji: "🌙",
+    kind: "quiz-drag",
+    prompt: "Ordena las fases de la Luna de <b>Llena → Nueva</b>.",
+    mode: "sort",
+    items: [
+      { id: "llena", label: "Luna llena" },
+      { id: "meng", label: "Cuarto menguante" },
+      { id: "nueva", label: "Luna nueva" },
+      { id: "crec", label: "Cuarto creciente" }
+    ],
+    correctOrder: ["llena", "meng", "nueva", "crec"],
+    explain: "Después de la luna llena viene menguante, luego nueva y vuelve a crecer."
+  },
+  {
+    id: "t1-caras-aprende-crateres",
+    trayecto: 1,
+    tema: "Caras de la Luna",
+    emoji: "🌝",
+    kind: "learn",
+    html:
+      "<p>La Luna tiene <b>cara visible</b> (la que vemos) y <b>cara oculta</b>. Gracias a la <b>rotación sincrónica</b>, siempre vemos la misma cara.</p>" +
+      "<p>La Luna tiene <b>cráteres</b> porque meteoritos chocaron contra su superficie.</p>"
+  },
+  {
+    id: "t1-caras-verdadero-falso",
+    trayecto: 1,
+    tema: "Caras de la Luna",
+    emoji: "🌝",
+    kind: "quiz-choice",
+    prompt: "Verdadero o falso: desde la Tierra <b>siempre</b> vemos la misma cara de la Luna.",
+    options: ["Verdadero", "Falso"],
+    answerIndex: 0,
+    explain: "Es verdadero por la rotación sincrónica."
+  },
+  {
+    id: "t1-caras-highlight-creciente",
+    trayecto: 1,
+    tema: "Caras de la Luna",
+    emoji: "🌝",
+    kind: "quiz-highlight",
+    prompt: "Toca la <b>parte iluminada</b> de la Luna en <i>cuarto creciente</i>.",
+    img: "/Studify/moon-crescent.svg",
+    alt: "Disco lunar con iluminación lateral",
+    hotspots: [{ id: "lado-derecho", x: 72, y: 50, r: 22 }],
+    explain: "En el cuarto creciente se ilumina el lado derecho."
+  },
+
+  // ======== TRAYECTO 2 — ANIMALES ========
+  {
+    id: "t2-locomotor-aprende-movimientos",
+    trayecto: 2,
+    tema: "Sistema locomotor",
+    emoji: "🐴",
+    kind: "learn",
+    html:
+      "<p>¡Moverse es vivir! Huesos forman el esqueleto, músculos jalan los huesos y las articulaciones permiten doblar.</p>" +
+      "<ul><li>Sin articulaciones no podríamos doblar codos o rodillas.</li><li>Los músculos necesitan <b>descanso</b> y <b>agua</b> para funcionar bien.</li></ul>"
+  },
+  {
+    id: "t2-locomotor-une-funciones",
+    trayecto: 2,
+    tema: "Sistema locomotor",
+    emoji: "🐴",
+    kind: "quiz-match",
+    prompt: "Une la parte del sistema con su función.",
+    left: [
+      { id: "h", label: "Huesos" },
+      { id: "m", label: "Músculos" },
+      { id: "a", label: "Articulaciones" }
+    ],
+    right: [
+      { id: "h-f", label: "Forman el esqueleto y protegen órganos." },
+      { id: "m-f", label: "Jalan los huesos para movernos." },
+      { id: "a-f", label: "Unen huesos y permiten doblar." }
+    ],
+    pairs: { h: "h-f", m: "m-f", a: "a-f" },
+    explain: "Cada parte cumple una tarea distinta pero trabajan juntas."
+  },
+  {
+    id: "t2-aves-movilidad-choice",
+    trayecto: 2,
+    tema: "Movilidad de aves",
+    emoji: "🕊️",
+    kind: "quiz-choice",
+    prompt: "El pingüino: ¿camina, vuela o nada?",
+    options: ["Camina", "Vuela", "Nada", "Camina y nada"],
+    answerIndex: 3,
+    explain: "El pingüino camina y nada, pero no vuela."
+  },
+  {
+    id: "t2-verte-inverte-aprende-ejemplos",
+    trayecto: 2,
+    tema: "Vertebrados vs. Invertebrados",
+    emoji: "🐻🦋",
+    kind: "learn",
+    html:
+      "<p><b>Vertebrados</b>: tienen columna (oso, delfín, águila).</p>" +
+      "<p><b>Invertebrados</b>: sin columna (mariposa, abeja, caracol, gusano).</p>"
+  },
+  {
+    id: "t2-verte-inverte-drag-bucket",
+    trayecto: 2,
+    tema: "Clasificación animal",
+    emoji: "🐾",
+    kind: "quiz-drag",
+    prompt: "Arrastra a cada grupo: <b>Vertebrado</b> o <b>Invertebrado</b>.",
+    mode: "bucket",
+    items: [
+      { id: "oso", label: "Oso" },
+      { id: "mariposa", label: "Mariposa" },
+      { id: "caracol", label: "Caracol" },
+      { id: "abeja", label: "Abeja" },
+      { id: "delfin", label: "Delfín" },
+      { id: "pez", label: "Pez" }
+    ],
+    buckets: [
+      { id: "v", label: "Vertebrado" },
+      { id: "i", label: "Invertebrado" }
+    ],
+    correctBuckets: {
+      oso: "v",
+      delfin: "v",
+      pez: "v",
+      mariposa: "i",
+      abeja: "i",
+      caracol: "i"
+    },
+    explain: "Los vertebrados tienen columna; insectos y moluscos no."
+  },
+  {
+    id: "t2-verte-razon-tamano",
+    trayecto: 2,
+    tema: "Vertebrados",
+    emoji: "🦴",
+    kind: "quiz-choice",
+    prompt: "¿Por qué muchos vertebrados pueden crecer más grandes?",
+    options: [
+      "Porque comen más azúcar",
+      "Porque tienen esqueleto interno que los sostiene",
+      "Porque viven en el agua"
+    ],
+    answerIndex: 1,
+    explain: "El esqueleto interno soporta el peso del cuerpo."
+  },
+
+  // ======== TRAYECTO 3 — MEZCLAS Y SALUD ========
+  {
+    id: "t3-solubilidad-aprende-temp",
+    trayecto: 3,
+    tema: "Solubilidad y temperatura",
+    emoji: "🥤",
+    kind: "learn",
+    html:
+      "<p>El <b>soluto</b> es lo que se disuelve (sal, azúcar). El <b>disolvente</b> es el líquido (agua, leche).</p>" +
+      "<p>El agua <b>caliente</b> puede disolver más rápido algunos solutos.</p>"
+  },
+  {
+    id: "t3-solubilidad-drag-clasifica",
+    trayecto: 3,
+    tema: "Clasifica soluto/disolvente",
+    emoji: "🧪",
+    kind: "quiz-drag",
+    prompt: "Arrastra cada elemento a <b>Soluto</b> o <b>Disolvente</b>.",
+    mode: "bucket",
+    items: [
+      { id: "azucar", label: "Azúcar" },
+      { id: "choco", label: "Chocolate en polvo" },
+      { id: "sal", label: "Sal" },
+      { id: "jugo", label: "Jugo en polvo" },
+      { id: "agua", label: "Agua" },
+      { id: "leche", label: "Leche" }
+    ],
+    buckets: [
+      { id: "soluto", label: "Soluto" },
+      { id: "disolvente", label: "Disolvente" }
+    ],
+    correctBuckets: {
+      azucar: "soluto",
+      choco: "soluto",
+      sal: "soluto",
+      jugo: "soluto",
+      agua: "disolvente",
+      leche: "disolvente"
+    },
+    explain: "Lo que se disuelve es el soluto; el líquido que disuelve es el disolvente."
+  },
+  {
+    id: "t3-aceite-agua-choice",
+    trayecto: 3,
+    tema: "Aceite y agua",
+    emoji: "🫗",
+    kind: "quiz-choice",
+    prompt: "¿Qué ocurre al mezclar aceite y agua?",
+    options: [
+      "Se disuelven y queda un solo líquido",
+      "No se mezclan; quedan separados",
+      "El aceite se vuelve sólido"
+    ],
+    answerIndex: 1,
+    explain: "Aceite y agua son inmiscibles y forman capas."
+  },
+  {
+    id: "t3-agua-salud-aprende-habitos",
+    trayecto: 3,
+    tema: "El agua en la salud",
+    emoji: "🚰",
+    kind: "learn",
+    html:
+      "<p>Beber agua ayuda a transportar nutrientes, regular la temperatura y eliminar desechos.</p>" +
+      "<ul><li>Prefiere agua simple.</li><li>Lleva tu botella.</li><li>Cierra la llave al cepillarte.</li></ul>"
+  },
+  {
+    id: "t3-agua-salud-reflex-act",
+    trayecto: 3,
+    tema: "Cuidado del agua",
+    emoji: "💧",
+    kind: "quiz-reflect",
+    prompt: "¿Qué acciones ayudan a cuidar el agua?",
+    choices: [
+      "Cerrar la llave mientras te cepillas",
+      "Reparar fugas",
+      "Bañarte 30 minutos (¡no!)",
+      "Usar una cubeta para lavar el coche"
+    ],
+    explain: "Ahorrar agua cuida la salud y el planeta."
+  },
+  {
+    id: "t3-sin-agua-choice-actividades",
+    trayecto: 3,
+    tema: "Sin agua en casa",
+    emoji: "🏠",
+    kind: "quiz-choice",
+    prompt: "¿Qué actividades se afectan sin agua en casa?",
+    options: ["Bañarse", "Cocinar", "Lavar dientes", "Todas las anteriores"],
+    answerIndex: 3,
+    explain: "Muchas actividades diarias dependen del agua."
+  }
+];
+
+// Export combined screens array
+export const ALL_SCREENS = [...screens, ...EXTRA_SCREENS];

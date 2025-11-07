@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { useGameStore } from '../store/gameStore';
-import { screens, getStickerByTrayecto } from '../content';
+import { ALL_SCREENS, getStickerByTrayecto } from '../content';
 import type { Screen } from '../content';
 import { preloadSounds, playSound } from '../utils/audio';
 import Header from '../components/Header';
@@ -29,7 +29,7 @@ export default function KidsCiencias() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [completedTrayecto, setCompletedTrayecto] = useState<number | null>(null);
 
-  const currentScreen: Screen = screens[currentScreenIndex];
+  const currentScreen: Screen = ALL_SCREENS[currentScreenIndex];
 
   // Precargar sonidos al montar
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function KidsCiencias() {
     if (!currentScreen) return;
 
     const trayecto = currentScreen.trayecto;
-    const trayectoScreens = screens.filter((s) => s.trayecto === trayecto);
+    const trayectoScreens = ALL_SCREENS.filter((s) => s.trayecto === trayecto);
     const lastTrayectoScreen = trayectoScreens[trayectoScreens.length - 1];
 
     // Si acabamos de completar la última pantalla de un trayecto
@@ -127,7 +127,7 @@ export default function KidsCiencias() {
         tema={currentScreen.tema}
         emoji={currentScreen.emoji}
         currentScreen={currentScreenIndex}
-        totalScreens={screens.length}
+        totalScreens={ALL_SCREENS.length}
       />
 
       {/* Contenido principal */}
