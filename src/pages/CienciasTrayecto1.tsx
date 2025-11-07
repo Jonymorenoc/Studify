@@ -103,25 +103,25 @@ const SCREENS: Screen[] = [
           <b className="text-blue-600">La Luna</b> cambia de apariencia porque vemos distinta parte iluminada por el Sol.
         </p>
         <div className="grid grid-cols-2 gap-4 my-4">
-          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors">
-            <div className="text-4xl mb-2">🌑</div>
+          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors hover:scale-105 transform">
+            <div className="text-6xl mb-2">🌑</div>
             <p className="text-sm font-semibold">Luna nueva</p>
           </div>
-          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors">
-            <div className="text-4xl mb-2">🌓</div>
+          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors hover:scale-105 transform">
+            <div className="text-6xl mb-2">🌓</div>
             <p className="text-sm font-semibold">Cuarto creciente</p>
           </div>
-          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors">
-            <div className="text-4xl mb-2">🌕</div>
+          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors hover:scale-105 transform">
+            <div className="text-6xl mb-2">🌕</div>
             <p className="text-sm font-semibold">Luna llena</p>
           </div>
-          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors">
-            <div className="text-4xl mb-2">🌗</div>
+          <div className="bg-slate-50 rounded-2xl p-4 text-center hover:bg-slate-100 transition-colors hover:scale-105 transform">
+            <div className="text-6xl mb-2">🌗</div>
             <p className="text-sm font-semibold">Cuarto menguante</p>
           </div>
         </div>
         <div className="bg-blue-50 rounded-2xl p-4 border-2 border-blue-200">
-          <p className="text-base font-semibold text-blue-900">💡 ¿Sabías que...?</p>
+          <p className="text-base font-semibold text-blue-900 flex items-center gap-2"><span className="text-2xl">💡</span> ¿Sabías que...?</p>
           <p className="text-sm text-blue-800 mt-1">Un ciclo lunar completo tarda aproximadamente 28 días.</p>
         </div>
       </div>
@@ -156,12 +156,12 @@ const SCREENS: Screen[] = [
           <b className="text-purple-600">rotación sincrónica</b>: tarda lo mismo en girar sobre sí misma que en dar la vuelta a la Tierra.
         </p>
         <div className="flex items-center justify-center gap-6 py-4 bg-slate-50 rounded-2xl">
-          <div className="text-6xl animate-pulse">🌍</div>
-          <div className="text-3xl">↔️</div>
-          <div className="text-6xl animate-pulse" style={{ animationDelay: '500ms' }}>🌕</div>
+          <div className="text-7xl animate-pulse">🌍</div>
+          <div className="text-4xl">↔️</div>
+          <div className="text-7xl animate-pulse" style={{ animationDelay: '500ms' }}>🌕</div>
         </div>
         <div className="bg-purple-50 rounded-2xl p-4 border-2 border-purple-200">
-          <p className="text-base font-semibold text-purple-900">🎯 Dato importante</p>
+          <p className="text-base font-semibold text-purple-900 flex items-center gap-2"><span className="text-2xl">🎯</span> Dato importante</p>
           <p className="text-sm text-purple-800 mt-1">
             Hay una cara visible (la que vemos) y otra cara oculta que no vemos desde la Tierra.
           </p>
@@ -247,19 +247,19 @@ const SCREENS: Screen[] = [
           Los <b className="text-orange-600">invertebrados</b> no la tienen (insectos, gusanos, moluscos...).
         </p>
         <div className="grid grid-cols-2 gap-4 mt-4">
-          <div className="rounded-2xl p-5 bg-emerald-50 border-2 border-emerald-300 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl mb-3">🐻</div>
+          <div className="rounded-2xl p-5 bg-emerald-50 border-2 border-emerald-300 text-center hover:scale-105 transition-transform cursor-pointer">
+            <div className="text-7xl mb-3">🐻</div>
             <p className="text-sm font-bold text-emerald-900">Vertebrado</p>
             <p className="text-xs text-emerald-700 mt-1">Con columna</p>
           </div>
-          <div className="rounded-2xl p-5 bg-orange-50 border-2 border-orange-300 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl mb-3">🦋</div>
+          <div className="rounded-2xl p-5 bg-orange-50 border-2 border-orange-300 text-center hover:scale-105 transition-transform cursor-pointer">
+            <div className="text-7xl mb-3">🦋</div>
             <p className="text-sm font-bold text-orange-900">Invertebrado</p>
             <p className="text-xs text-orange-700 mt-1">Sin columna</p>
           </div>
         </div>
         <div className="bg-green-50 rounded-2xl p-4 border-2 border-green-200">
-          <p className="text-base font-semibold text-green-900">🔬 Para recordar</p>
+          <p className="text-base font-semibold text-green-900 flex items-center gap-2"><span className="text-2xl">🔬</span> Para recordar</p>
           <p className="text-sm text-green-800 mt-1">
             Los vertebrados representan solo el 5% de todos los animales. ¡Hay muchos más invertebrados!
           </p>
@@ -363,7 +363,7 @@ const SCREENS: Screen[] = [
           </ul>
         </div>
         <div className="bg-green-50 rounded-2xl p-4 border-2 border-green-200">
-          <p className="text-base font-semibold text-green-900">⚖️ Derecho humano</p>
+          <p className="text-base font-semibold text-green-900 flex items-center gap-2"><span className="text-2xl">⚖️</span> Derecho humano</p>
           <p className="text-sm text-green-800 mt-1">¡El agua potable es un derecho de todas las personas!</p>
         </div>
       </div>
@@ -389,6 +389,26 @@ const SCREENS: Screen[] = [
   },
 ]
 
+// ---------- Helper Functions ----------
+function shuffleOptions(options: string[], correctIndex: number): { shuffled: string[]; newCorrectIndex: number } {
+  // Create array of indices
+  const indices = options.map((_, i) => i)
+
+  // Fisher-Yates shuffle
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[indices[i], indices[j]] = [indices[j], indices[i]]
+  }
+
+  // Apply shuffle to options
+  const shuffled = indices.map(i => options[i])
+
+  // Find new position of correct answer
+  const newCorrectIndex = indices.indexOf(correctIndex)
+
+  return { shuffled, newCorrectIndex }
+}
+
 // ---------- Componente principal ----------
 export default function CienciasTrayecto1() {
   const [idx, setIdx] = useState(0)
@@ -396,9 +416,20 @@ export default function CienciasTrayecto1() {
   const [answered, setAnswered] = useState<number | null>(null)
   const [showExplain, setShowExplain] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
+  const [shuffledQuiz, setShuffledQuiz] = useState<{ options: string[]; correctIndex: number } | null>(null)
 
   const screen = SCREENS[idx]
   const totalQuizzes = useMemo(() => SCREENS.filter(s => s.kind === 'quiz').length, [])
+
+  // Shuffle quiz options when a new quiz screen is shown
+  useEffect(() => {
+    if (screen.kind === 'quiz' && screen.quiz) {
+      const { shuffled, newCorrectIndex } = shuffleOptions(screen.quiz.options, screen.quiz.answerIndex)
+      setShuffledQuiz({ options: shuffled, correctIndex: newCorrectIndex })
+    } else {
+      setShuffledQuiz(null)
+    }
+  }, [idx, screen])
   const done = idx >= SCREENS.length
 
   const quizzesPassed = useMemo(() => {
@@ -432,9 +463,9 @@ export default function CienciasTrayecto1() {
   }
 
   const handleOption = (i: number) => {
-    if (screen.kind !== 'quiz' || answered !== null) return
+    if (screen.kind !== 'quiz' || answered !== null || !shuffledQuiz) return
     setAnswered(i)
-    const correct = i === screen.quiz!.answerIndex
+    const correct = i === shuffledQuiz.correctIndex
     if (correct) {
       setScore(v => v + 1)
       fireCelebration()
@@ -523,13 +554,33 @@ export default function CienciasTrayecto1() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-purple-50/30 text-slate-900 flex flex-col pb-safe">
+    <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-purple-50/30 text-slate-900 flex flex-col pb-safe relative overflow-hidden">
+      {/* Floating emojis */}
+      <span className="floating-emoji left-[5%] top-[15%] text-5xl opacity-30" aria-hidden>
+        🌙
+      </span>
+      <span className="floating-emoji animation-delay-200 right-[8%] top-[25%] text-6xl opacity-25" aria-hidden>
+        ⭐
+      </span>
+      <span className="floating-emoji animation-delay-400 left-[10%] bottom-[30%] text-5xl opacity-30" aria-hidden>
+        🔬
+      </span>
+      <span className="floating-emoji animation-delay-600 right-[12%] bottom-[20%] text-6xl opacity-25" aria-hidden>
+        🧪
+      </span>
+      <span className="floating-emoji animation-delay-800 left-[15%] top-[45%] text-5xl opacity-20" aria-hidden>
+        💧
+      </span>
+      <span className="floating-emoji animation-delay-1000 right-[5%] top-[55%] text-6xl opacity-25" aria-hidden>
+        🌍
+      </span>
+
       {/* Encabezado con animación */}
       <header className="sticky top-0 z-10 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-sm">
         <div className="p-4 sm:p-5">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="text-3xl sm:text-4xl">{screen.emoji}</div>
+              <div className="text-5xl sm:text-6xl">{screen.emoji}</div>
               <div>
                 <div className="text-xs text-slate-500 font-semibold">Trayecto {screen.trayecto}</div>
                 <div className="text-xs text-slate-400">Pantalla {idx + 1} de {SCREENS.length}</div>
@@ -603,7 +654,7 @@ export default function CienciasTrayecto1() {
               <p className="text-lg sm:text-xl font-bold mb-4 text-slate-800 leading-tight">{screen.quiz!.prompt}</p>
 
               <div className="space-y-2">
-                {screen.quiz!.options.map((opt, i) => (
+                {shuffledQuiz && shuffledQuiz.options.map((opt, i) => (
                   <Pill
                     key={i}
                     index={i}
@@ -612,7 +663,7 @@ export default function CienciasTrayecto1() {
                     disabled={answered !== null}
                     correct={
                       answered !== null
-                        ? i === screen.quiz!.answerIndex
+                        ? i === shuffledQuiz.correctIndex
                           ? true
                           : i === answered
                             ? false
