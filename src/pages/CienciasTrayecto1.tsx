@@ -676,6 +676,14 @@ const SCREENS: Screen[] = [
   },
 ]
 
+// Helper function to shuffle array and return shuffled array with new answer index
+function shuffleOptions(options: string[], answerIndex: number): { shuffledOptions: string[]; newAnswerIndex: number } {
+  const correctAnswer = options[answerIndex]
+  const shuffled = [...options].sort(() => Math.random() - 0.5)
+  const newAnswerIndex = shuffled.indexOf(correctAnswer)
+  return { shuffledOptions: shuffled, newAnswerIndex }
+}
+
 // ---------- Componente principal ----------
 export default function CienciasTrayecto1() {
   const [idx, setIdx] = useState(0)
@@ -683,6 +691,9 @@ export default function CienciasTrayecto1() {
   const [answered, setAnswered] = useState<number | null>(null)
   const [showExplain, setShowExplain] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
+
+  // Store shuffled quiz options for current screen
+  const [shuffledQuiz, setShuffledQuiz] = useState<{ options: string[]; answerIndex: number } | null>(null)
 
   const screen = SCREENS[idx]
   const totalQuizzes = useMemo(() => SCREENS.filter(s => s.kind === 'quiz').length, [])
@@ -693,6 +704,16 @@ export default function CienciasTrayecto1() {
   }, [score])
 
   const progress = Math.round(((idx) / SCREENS.length) * 100)
+
+  // Shuffle quiz options when screen changes
+  useEffect(() => {
+    if (screen?.kind === 'quiz' && screen.quiz) {
+      const { shuffledOptions, newAnswerIndex } = shuffleOptions(screen.quiz.options, screen.quiz.answerIndex)
+      setShuffledQuiz({ options: shuffledOptions, answerIndex: newAnswerIndex })
+    } else {
+      setShuffledQuiz(null)
+    }
+  }, [idx, screen])
 
   // Save progress
   useEffect(() => {
@@ -719,9 +740,9 @@ export default function CienciasTrayecto1() {
   }
 
   const handleOption = (i: number) => {
-    if (screen.kind !== 'quiz' || answered !== null) return
+    if (screen.kind !== 'quiz' || answered !== null || !shuffledQuiz) return
     setAnswered(i)
-    const correct = i === screen.quiz!.answerIndex
+    const correct = i === shuffledQuiz.answerIndex
     if (correct) {
       setScore(v => v + 1)
       fireCelebration()
@@ -761,9 +782,29 @@ export default function CienciasTrayecto1() {
     const stars = quizzesPassed === totalQuizzes ? 3 : quizzesPassed >= totalQuizzes * 0.7 ? 2 : quizzesPassed >= totalQuizzes * 0.4 ? 1 : 0
 
     return (
-      <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50 text-slate-900 p-4 sm:p-6 flex flex-col justify-center items-center">
-        <div className="w-full bg-white rounded-3xl shadow-2xl p-8 text-center space-y-6 border-2 border-purple-200">
-          <div className="text-7xl animate-bounce">🎉</div>
+      <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50 text-slate-900 p-4 sm:p-6 flex flex-col justify-center items-center relative overflow-hidden">
+        {/* Floating emojis for completion screen */}
+        <span className="floating-emoji left-[8%] top-[10%]" aria-hidden>
+          🌙
+        </span>
+        <span className="floating-emoji animation-delay-200 right-[10%] top-[15%]" aria-hidden>
+          🐻
+        </span>
+        <span className="floating-emoji animation-delay-400 left-[5%] bottom-[15%]" aria-hidden>
+          💧
+        </span>
+        <span className="floating-emoji animation-delay-200 right-[8%] bottom-[10%]" aria-hidden>
+          🦴
+        </span>
+        <span className="floating-emoji left-[12%] top-[40%]" aria-hidden>
+          ⭐
+        </span>
+        <span className="floating-emoji animation-delay-400 right-[15%] top-[50%]" aria-hidden>
+          🌟
+        </span>
+
+        <div className="w-full bg-white rounded-3xl shadow-2xl p-8 text-center space-y-6 border-2 border-purple-200 relative z-10">
+          <div className="text-9xl animate-bounce">🎉</div>
           <h1 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             ¡Felicitaciones!
           </h1>
@@ -810,13 +851,33 @@ export default function CienciasTrayecto1() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-purple-50/30 text-slate-900 flex flex-col pb-safe">
+    <div className="max-w-2xl mx-auto min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-purple-50/30 text-slate-900 flex flex-col pb-safe relative overflow-hidden">
+      {/* Floating emojis */}
+      <span className="floating-emoji left-[5%] top-[15%]" aria-hidden>
+        🌙
+      </span>
+      <span className="floating-emoji animation-delay-200 right-[8%] top-[25%]" aria-hidden>
+        🐻
+      </span>
+      <span className="floating-emoji animation-delay-400 left-[10%] bottom-[30%]" aria-hidden>
+        💧
+      </span>
+      <span className="floating-emoji animation-delay-200 right-[5%] bottom-[20%]" aria-hidden>
+        🦴
+      </span>
+      <span className="floating-emoji left-[15%] top-[45%]" aria-hidden>
+        ⭐
+      </span>
+      <span className="floating-emoji animation-delay-400 right-[12%] top-[55%]" aria-hidden>
+        🌟
+      </span>
+
       {/* Encabezado con animación */}
       <header className="sticky top-0 z-10 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-sm">
         <div className="p-4 sm:p-5">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="text-3xl sm:text-4xl">{screen.emoji}</div>
+              <div className="text-5xl sm:text-6xl">{screen.emoji}</div>
               <div>
                 <div className="text-xs text-slate-500 font-semibold">Trayecto {screen.trayecto}</div>
                 <div className="text-xs text-slate-400">Pantalla {idx + 1} de {SCREENS.length}</div>
@@ -835,13 +896,13 @@ export default function CienciasTrayecto1() {
       </header>
 
       {/* Contenido */}
-      <main className="flex-1 p-4 sm:p-6">
+      <main className="flex-1 p-4 sm:p-6 relative z-10">
         <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-7 border-2 border-slate-100 relative overflow-hidden">
           {/* Animación de celebración */}
           {showCelebration && (
             <div className="absolute inset-0 flex items-center justify-center bg-white/90 backdrop-blur-sm z-20 animate-fade-in rounded-3xl">
               <div className="text-center">
-                <div className="text-8xl mb-4 animate-bounce">🎉</div>
+                <div className="text-9xl mb-4 animate-bounce">🎉</div>
                 <p className="text-3xl font-bold text-green-600">¡Correcto!</p>
               </div>
             </div>
@@ -890,7 +951,7 @@ export default function CienciasTrayecto1() {
               <p className="text-lg sm:text-xl font-bold mb-4 text-slate-800 leading-tight">{screen.quiz!.prompt}</p>
 
               <div className="space-y-2">
-                {screen.quiz!.options.map((opt, i) => (
+                {shuffledQuiz && shuffledQuiz.options.map((opt, i) => (
                   <Pill
                     key={i}
                     index={i}
@@ -899,7 +960,7 @@ export default function CienciasTrayecto1() {
                     disabled={answered !== null}
                     correct={
                       answered !== null
-                        ? i === screen.quiz!.answerIndex
+                        ? i === shuffledQuiz.answerIndex
                           ? true
                           : i === answered
                             ? false
