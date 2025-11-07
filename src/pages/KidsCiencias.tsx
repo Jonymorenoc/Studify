@@ -57,7 +57,7 @@ export default function KidsCiencias() {
         setCompletedTrayecto(null);
       }, 5000);
     }
-  }, [currentScreenIndex]);
+  }, [currentScreenIndex, currentScreen, soundEnabled, unlockedStickers, unlockSticker]);
 
   // Compartir progreso
   const handleShareProgress = () => {

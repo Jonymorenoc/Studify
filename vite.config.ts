@@ -23,15 +23,15 @@ export default defineConfig({
         scope: '/Studify/',
         icons: [
           {
-            src: '/Studify/icon-192.png',
+            src: '/Studify/icon-192.png.svg',
             sizes: '192x192',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           },
           {
-            src: '/Studify/icon-512.png',
+            src: '/Studify/icon-512.png.svg',
             sizes: '512x512',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           }
         ]

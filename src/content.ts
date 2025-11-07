@@ -92,7 +92,7 @@ export const screens: Screen[] = [
       </ul>
       <p>Este ciclo dura aproximadamente <strong>28 días</strong>.</p>
     `,
-    media: { img: "/moon-phases.svg", alt: "Fases de la Luna" }
+    media: { img: "/Studify/moon-phases.svg", alt: "Fases de la Luna" }
   },
 
   // Pantalla 2: Quiz choice sobre Luna Llena
@@ -150,7 +150,7 @@ export const screens: Screen[] = [
       </ul>
       <p>Por eso, desde la Tierra, siempre vemos la misma cara lunar.</p>
     `,
-    media: { img: "/moon-rotation.svg", alt: "Rotación sincrónica de la Luna" }
+    media: { img: "/Studify/moon-rotation.svg", alt: "Rotación sincrónica de la Luna" }
   },
 
   // Pantalla 5: Quiz choice sobre rotación sincrónica
@@ -179,7 +179,7 @@ export const screens: Screen[] = [
     emoji: "🌙",
     kind: "quiz-highlight",
     prompt: "Toca la mitad iluminada en la Luna en cuarto creciente:",
-    img: "/moon-crescent.svg",
+    img: "/Studify/moon-crescent.svg",
     alt: "Luna en cuarto creciente",
     hotspots: [
       { id: "derecha", x: 60, y: 50, r: 25 }
@@ -206,7 +206,7 @@ export const screens: Screen[] = [
       </ul>
       <p>Todos los animales vertebrados tienen este sistema que les permite caminar, correr, nadar o volar.</p>
     `,
-    media: { img: "/locomotor-system.svg", alt: "Sistema locomotor" }
+    media: { img: "/Studify/locomotor-system.svg", alt: "Sistema locomotor" }
   },
 
   // Pantalla 8: Quiz match - Sistema locomotor
@@ -263,7 +263,7 @@ export const screens: Screen[] = [
         <li>🕷️ Arácnidos (arañas)</li>
       </ul>
     `,
-    media: { img: "/vertebrados-invertebrados.svg", alt: "Vertebrados e Invertebrados" }
+    media: { img: "/Studify/vertebrados-invertebrados.svg", alt: "Vertebrados e Invertebrados" }
   },
 
   // Pantalla 10: Quiz drag-bucket - Clasificar animales
@@ -343,7 +343,7 @@ export const screens: Screen[] = [
 
       <p>El <strong>soluto</strong> es la sustancia en menor cantidad que se disuelve, y el <strong>disolvente</strong> es la sustancia en mayor cantidad.</p>
     `,
-    media: { img: "/solubilidad.svg", alt: "Soluto y disolvente" }
+    media: { img: "/Studify/solubilidad.svg", alt: "Soluto y disolvente" }
   },
 
   // Pantalla 13: Quiz choice - Soluto
@@ -416,7 +416,7 @@ export const screens: Screen[] = [
 
       <p><strong>Inmiscibles</strong> significa que dos líquidos no se pueden disolver uno en el otro. Quedan separados en capas.</p>
     `,
-    media: { img: "/aceite-agua.svg", alt: "Aceite y agua separados" }
+    media: { img: "/Studify/aceite-agua.svg", alt: "Aceite y agua separados" }
   },
 
   // Pantalla 16: Quiz choice - Aceite y agua
@@ -459,7 +459,7 @@ export const screens: Screen[] = [
 
       <p><strong>💧 El agua potable es un derecho humano.</strong> Todos debemos tener acceso a agua limpia y segura.</p>
     `,
-    media: { img: "/agua-salud.svg", alt: "Importancia del agua" }
+    media: { img: "/Studify/agua-salud.svg", alt: "Importancia del agua" }
   },
 
   // Pantalla 18: Quiz reflect - Reflexión sobre el agua

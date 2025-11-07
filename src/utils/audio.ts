@@ -2,10 +2,10 @@ import { Howl } from 'howler';
 
 // Rutas a los archivos de audio
 const AUDIO_FILES = {
-  correct: '/sounds/correct.mp3',
-  wrong: '/sounds/wrong.mp3',
-  sticker: '/sounds/sticker.mp3',
-  click: '/sounds/click.mp3'
+  correct: '/Studify/sounds/correct.mp3',
+  wrong: '/Studify/sounds/wrong.mp3',
+  sticker: '/Studify/sounds/sticker.mp3',
+  click: '/Studify/sounds/click.mp3'
 };
 
 // Cache de sonidos precargados
