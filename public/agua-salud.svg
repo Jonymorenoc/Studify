@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- Gota de agua -->
+  <path d="M 150 40 Q 170 70, 170 90 Q 170 120, 150 130 Q 130 120, 130 90 Q 130 70, 150 40" fill="#4fc3f7" stroke="#0288d1" stroke-width="2"/>
+
+  <!-- Iconos de beneficios -->
+  <text x="70" y="80" font-size="20">💧</text>
+  <text x="70" y="100" font-size="10" fill="#333">Hidratación</text>
+
+  <text x="220" y="80" font-size="20">🌡️</text>
+  <text x="220" y="100" font-size="10" fill="#333">Temperatura</text>
+
+  <text x="70" y="150" font-size="20">🍎</text>
+  <text x="70" y="170" font-size="10" fill="#333">Nutrientes</text>
+
+  <text x="220" y="150" font-size="20">🧹</text>
+  <text x="220" y="170" font-size="10" fill="#333">Limpieza</text>
+
+  <text x="150" y="190" text-anchor="middle" font-size="13" fill="#0277bd" font-weight="bold">El Agua es Vida</text>
+</svg>

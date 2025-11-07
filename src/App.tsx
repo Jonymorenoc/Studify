@@ -11,6 +11,7 @@ const Trayecto1 = lazy(()=>import('./pages/Trayecto1'))
 const Trayecto2 = lazy(()=>import('./pages/Trayecto2'))
 const Trayecto3 = lazy(()=>import('./pages/Trayecto3'))
 const CienciasTrayecto1 = lazy(()=>import('./pages/CienciasTrayecto1'))
+const KidsCiencias = lazy(()=>import('./pages/KidsCiencias'))
 const MitosLeyendas = lazy(()=>import('./pages/ejercicios/MitosLeyendas'))
 const LenguajeVisualSonoro = lazy(()=>import('./pages/ejercicios/LenguajeVisualSonoro'))
 const TiemposVerbales = lazy(()=>import('./pages/ejercicios/TiemposVerbales'))
@@ -64,6 +65,7 @@ function App() {
                 <Route path="/trimestre-1/lengua/trayecto-2" element={<Trayecto2 />} />
                 <Route path="/trimestre-1/lengua/trayecto-3" element={<Trayecto3 />} />
                 <Route path="/trimestre-1/ciencias/trayecto-1" element={<CienciasTrayecto1 />} />
+                <Route path="/kids-ciencias" element={<KidsCiencias />} />
                 <Route path="/trimestre-1/lengua/trayecto-1/mitos-y-leyendas" element={<MitosLeyendas />} />
                 <Route path="/trimestre-1/lengua/trayecto-1/lenguaje-visual-y-sonoro" element={<LenguajeVisualSonoro />} />
                 <Route path="/trimestre-1/lengua/trayecto-1/tiempos-verbales" element={<TiemposVerbales />} />

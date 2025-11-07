@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <!-- Luna Nueva -->
+  <circle cx="50" cy="50" r="20" fill="#333" />
+  <text x="50" y="85" text-anchor="middle" font-size="10" fill="#333">Nueva</text>
+
+  <!-- Cuarto Creciente -->
+  <circle cx="150" cy="50" r="20" fill="#ddd" />
+  <path d="M 150 30 A 20 20 0 0 1 150 70 Z" fill="#333" />
+  <text x="150" y="85" text-anchor="middle" font-size="10" fill="#333">Creciente</text>
+
+  <!-- Luna Llena -->
+  <circle cx="250" cy="50" r="20" fill="#ddd" />
+  <text x="250" y="85" text-anchor="middle" font-size="10" fill="#333">Llena</text>
+
+  <!-- Cuarto Menguante -->
+  <circle cx="350" cy="50" r="20" fill="#ddd" />
+  <path d="M 350 30 A 20 20 0 0 0 350 70 Z" fill="#333" />
+  <text x="350" y="85" text-anchor="middle" font-size="10" fill="#333">Menguante</text>
+</svg>

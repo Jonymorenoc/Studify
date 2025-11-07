@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Vertebrados -->
+  <text x="100" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#7F6BFF">Vertebrados</text>
+  <text x="50" y="60" font-size="24">🐟</text>
+  <text x="90" y="60" font-size="24">🐦</text>
+  <text x="130" y="60" font-size="24">🐻</text>
+
+  <!-- Invertebrados -->
+  <text x="300" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#F38DE0">Invertebrados</text>
+  <text x="250" y="60" font-size="24">🦋</text>
+  <text x="290" y="60" font-size="24">🐌</text>
+  <text x="330" y="60" font-size="24">🐝</text>
+
+  <!-- Con columna -->
+  <line x1="50" y1="90" x2="140" y2="90" stroke="#7F6BFF" stroke-width="3"/>
+  <text x="100" y="110" text-anchor="middle" font-size="12" fill="#333">CON columna vertebral</text>
+
+  <!-- Sin columna -->
+  <line x1="250" y1="90" x2="340" y2="90" stroke="#F38DE0" stroke-width="3" stroke-dasharray="5,5"/>
+  <text x="300" y="110" text-anchor="middle" font-size="12" fill="#333">SIN columna vertebral</text>
+</svg>
