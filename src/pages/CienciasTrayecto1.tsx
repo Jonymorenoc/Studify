@@ -387,6 +387,293 @@ const SCREENS: Screen[] = [
       funFact: 'Una llave goteando puede desperdiciar más de 20 litros de agua al día. ¡Eso es como 100 vasos de agua!',
     },
   },
+
+  // ======== EJERCICIOS ADICIONALES — TRAYECTO 1 ========
+
+  // Fases de la Luna - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'Las fases de la Luna',
+    emoji: '🌙',
+    kind: 'learn',
+    animation: moonPhasesAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          <b className="text-blue-600">¿Por qué cambia la 'forma' de la Luna?</b> Porque vemos distinta <b>parte iluminada</b> por el Sol.
+        </p>
+        <ul className="space-y-2 text-base">
+          <li className="flex items-start gap-2">
+            <span className="text-2xl">🌘</span>
+            <span>Si vemos poca luz → fase <i>delgada</i></span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-2xl">🌕</span>
+            <span>Si vemos toda la luz → <b>luna llena</b></span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-2xl">🌑</span>
+            <span>La sombra es la parte que no recibe luz</span>
+          </li>
+        </ul>
+        <div className="bg-blue-50 rounded-2xl p-4 border-2 border-blue-200">
+          <p className="text-base font-semibold text-blue-900">🌟 Recuerda</p>
+          <p className="text-sm text-blue-800 mt-1">La Luna no cambia, solo cambia cuánta luz del Sol vemos reflejada.</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Las fases de la Luna',
+    emoji: '🌙',
+    kind: 'quiz',
+    animation: moonPhasesAnimation,
+    quiz: {
+      prompt: '¿Qué fase viene después de la Luna llena?',
+      options: ['Luna nueva', 'Cuarto creciente', 'Cuarto menguante'],
+      answerIndex: 2,
+      explain: 'Después de la luna llena viene el cuarto menguante, luego la luna nueva, y después vuelve a crecer.',
+      funFact: 'El ciclo completo de fases lunares se llama "mes lunar" y dura unos 29.5 días.',
+    },
+  },
+
+  // Caras de la Luna - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'Las caras de la Luna',
+    emoji: '🌝',
+    kind: 'learn',
+    animation: moonPhasesAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          La Luna tiene <b className="text-blue-600">cara visible</b> (la que vemos) y <b className="text-purple-600">cara oculta</b>. Gracias a la{' '}
+          <b>rotación sincrónica</b>, siempre vemos la misma cara.
+        </p>
+        <p className="text-lg leading-relaxed">
+          La Luna tiene <b className="text-orange-600">cráteres</b> porque meteoritos chocaron contra su superficie hace millones de años.
+        </p>
+        <div className="bg-slate-50 rounded-2xl p-5 text-center">
+          <div className="text-7xl mb-3">🌕</div>
+          <p className="text-sm font-semibold text-slate-700">La misma cara siempre nos mira</p>
+        </div>
+        <div className="bg-purple-50 rounded-2xl p-4 border-2 border-purple-200">
+          <p className="text-base font-semibold text-purple-900">🚀 Curiosidad</p>
+          <p className="text-sm text-purple-800 mt-1">Los astronautas han caminado sobre la Luna y han visto ambas caras.</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Las caras de la Luna',
+    emoji: '🌝',
+    kind: 'quiz',
+    animation: moonPhasesAnimation,
+    quiz: {
+      prompt: 'Verdadero o falso: desde la Tierra siempre vemos la misma cara de la Luna.',
+      options: ['Verdadero', 'Falso'],
+      answerIndex: 0,
+      explain: 'Es verdadero. La rotación sincrónica hace que siempre veamos la misma cara de la Luna desde la Tierra.',
+      funFact: 'La cara oculta de la Luna fue fotografiada por primera vez en 1959 por una nave espacial soviética.',
+    },
+  },
+
+  // Sistema locomotor - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'Sistema locomotor',
+    emoji: '🦴',
+    kind: 'learn',
+    animation: animalAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          <b className="text-green-600">¡Moverse es vivir!</b> Los huesos forman el esqueleto, los músculos jalan los huesos y las articulaciones permiten doblar.
+        </p>
+        <div className="space-y-3">
+          <div className="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400">
+            <p className="font-bold text-blue-900">🦴 Sin articulaciones</p>
+            <p className="text-sm text-blue-800 mt-1">No podríamos doblar codos o rodillas.</p>
+          </div>
+          <div className="bg-green-50 rounded-2xl p-4 border-l-4 border-green-400">
+            <p className="font-bold text-green-900">💧 Los músculos necesitan</p>
+            <p className="text-sm text-green-800 mt-1">Descanso y agua para funcionar bien.</p>
+          </div>
+        </div>
+        <div className="bg-orange-50 rounded-2xl p-4 border-2 border-orange-200">
+          <p className="text-base font-semibold text-orange-900">💪 Ejercicio</p>
+          <p className="text-sm text-orange-800 mt-1">Hacer ejercicio fortalece huesos y músculos.</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Movilidad de aves',
+    emoji: '🕊️',
+    kind: 'quiz',
+    animation: animalAnimation,
+    quiz: {
+      prompt: 'El pingüino: ¿camina, vuela o nada?',
+      options: ['Solo camina', 'Solo vuela', 'Solo nada', 'Camina y nada'],
+      answerIndex: 3,
+      explain: 'El pingüino camina y nada muy bien, pero no vuela. Sus alas se adaptaron para nadar.',
+      funFact: 'Los pingüinos pueden nadar hasta 35 km/h bajo el agua, ¡más rápido que muchos peces!',
+    },
+  },
+
+  // Vertebrados/Invertebrados - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'Vertebrados e invertebrados',
+    emoji: '🐻',
+    kind: 'learn',
+    animation: animalAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          <b className="text-green-600">Vertebrados</b>: tienen columna (oso, delfín, águila, pez, serpiente).
+        </p>
+        <p className="text-lg leading-relaxed">
+          <b className="text-orange-600">Invertebrados</b>: sin columna (mariposa, abeja, caracol, gusano, araña).
+        </p>
+        <div className="grid grid-cols-2 gap-3 mt-4">
+          <div className="bg-emerald-50 rounded-2xl p-4 text-center border-2 border-emerald-300">
+            <div className="text-4xl mb-2">🐻</div>
+            <p className="text-xs font-bold text-emerald-900">Oso</p>
+            <p className="text-xs text-emerald-700">Vertebrado</p>
+          </div>
+          <div className="bg-orange-50 rounded-2xl p-4 text-center border-2 border-orange-300">
+            <div className="text-4xl mb-2">🦋</div>
+            <p className="text-xs font-bold text-orange-900">Mariposa</p>
+            <p className="text-xs text-orange-700">Invertebrado</p>
+          </div>
+          <div className="bg-emerald-50 rounded-2xl p-4 text-center border-2 border-emerald-300">
+            <div className="text-4xl mb-2">🐬</div>
+            <p className="text-xs font-bold text-emerald-900">Delfín</p>
+            <p className="text-xs text-emerald-700">Vertebrado</p>
+          </div>
+          <div className="bg-orange-50 rounded-2xl p-4 text-center border-2 border-orange-300">
+            <div className="text-4xl mb-2">🐌</div>
+            <p className="text-xs font-bold text-orange-900">Caracol</p>
+            <p className="text-xs text-orange-700">Invertebrado</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Vertebrados',
+    emoji: '🦴',
+    kind: 'quiz',
+    animation: animalAnimation,
+    quiz: {
+      prompt: '¿Por qué muchos vertebrados pueden crecer más grandes que los invertebrados?',
+      options: [
+        'Porque comen más azúcar',
+        'Porque tienen esqueleto interno que los sostiene',
+        'Porque viven en el agua',
+      ],
+      answerIndex: 1,
+      explain: 'El esqueleto interno de los vertebrados soporta el peso del cuerpo, permitiéndoles crecer más grandes.',
+      funFact: 'La ballena azul es el animal más grande del mundo y es un vertebrado. ¡Puede pesar más de 150 toneladas!',
+    },
+  },
+
+  // Solubilidad - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'Solubilidad y temperatura',
+    emoji: '🥤',
+    kind: 'learn',
+    animation: waterDropAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          El <b className="text-blue-600">soluto</b> es lo que se disuelve (sal, azúcar, chocolate en polvo).
+        </p>
+        <p className="text-lg leading-relaxed">
+          El <b className="text-cyan-600">disolvente</b> es el líquido que disuelve (agua, leche, jugo).
+        </p>
+        <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-5 border-2 border-orange-200">
+          <p className="text-xl font-bold text-orange-900 mb-2">🔥 Temperatura</p>
+          <p className="text-sm text-orange-800">
+            El agua <b>caliente</b> puede disolver más rápido algunos solutos, como el azúcar o la sal.
+          </p>
+        </div>
+        <div className="bg-blue-50 rounded-2xl p-4 border-2 border-blue-200">
+          <p className="text-base font-semibold text-blue-900">🧪 Experimento en casa</p>
+          <p className="text-sm text-blue-800 mt-1">Prueba disolver azúcar en agua fría y agua caliente. ¿Cuál es más rápida?</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Aceite y agua',
+    emoji: '🫗',
+    kind: 'quiz',
+    animation: waterDropAnimation,
+    quiz: {
+      prompt: '¿Qué ocurre al mezclar aceite y agua?',
+      options: [
+        'Se disuelven y queda un solo líquido',
+        'No se mezclan; quedan separados en capas',
+        'El aceite se vuelve sólido',
+      ],
+      answerIndex: 1,
+      explain: 'El aceite y el agua son inmiscibles. El aceite flota sobre el agua porque es menos denso y tienen propiedades químicas diferentes.',
+      funFact: 'Por eso los derrames de petróleo flotan en el océano y son tan difíciles de limpiar.',
+    },
+  },
+
+  // Agua y salud - Ejercicios adicionales
+  {
+    trayecto: 1,
+    tema: 'El agua en la salud',
+    emoji: '🚰',
+    kind: 'learn',
+    animation: waterDropAnimation,
+    body: (
+      <div className="space-y-4 animate-fade-in">
+        <p className="text-lg leading-relaxed">
+          Beber agua ayuda a <b className="text-blue-600">transportar nutrientes</b>, <b className="text-orange-600">regular la temperatura</b> y{' '}
+          <b className="text-purple-600">eliminar desechos</b>.
+        </p>
+        <div className="space-y-3">
+          <div className="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400">
+            <p className="font-bold text-blue-900">💧 Prefiere agua simple</p>
+            <p className="text-sm text-blue-800 mt-1">Mejor que refrescos o jugos azucarados.</p>
+          </div>
+          <div className="bg-green-50 rounded-2xl p-4 border-l-4 border-green-400">
+            <p className="font-bold text-green-900">🎒 Lleva tu botella</p>
+            <p className="text-sm text-green-800 mt-1">Siempre ten agua disponible.</p>
+          </div>
+          <div className="bg-cyan-50 rounded-2xl p-4 border-l-4 border-cyan-400">
+            <p className="font-bold text-cyan-900">🚰 Cierra la llave</p>
+            <p className="text-sm text-cyan-800 mt-1">Al cepillarte los dientes, ahorra agua.</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    trayecto: 1,
+    tema: 'Sin agua en casa',
+    emoji: '🏠',
+    kind: 'quiz',
+    animation: waterDropAnimation,
+    quiz: {
+      prompt: '¿Qué actividades se afectan sin agua en casa?',
+      options: ['Bañarse', 'Cocinar', 'Lavar dientes', 'Todas las anteriores'],
+      answerIndex: 3,
+      explain: 'Muchas actividades diarias dependen del agua: bañarnos, cocinar, lavar dientes, limpiar la casa, y más.',
+      funFact: 'Casi el 70% del cuerpo humano está hecho de agua. ¡Por eso es tan importante mantenernos hidratados!',
+    },
+  },
 ]
 
 // ---------- Componente principal ----------

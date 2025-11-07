@@ -24,8 +24,8 @@ export default function CienciasExam() {
     .reduce((acc, key) => acc + (all[key]?.stars ?? 0), 0)
 
   const stats = [
-    { label: 'Ejercicios', value: `${completedExercises}/8` },
-    { label: 'Estrellas', value: `${earnedStars}/24` },
+    { label: 'Ejercicios', value: `${completedExercises}/14` },
+    { label: 'Estrellas', value: `${earnedStars}/42` },
   ]
 
   return (
